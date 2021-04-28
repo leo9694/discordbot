@@ -1,0 +1,15 @@
+{
+  "servidor2": [
+    {
+      "id": "1",
+      "nick": "pedro",
+      "avatar": "link.com/avatar.png"
+    },
+    {
+      "id": "1",
+      "nick": "pedro",
+      "avatar": "link.com/avatar.png"
+    }
+  ],
+  "servidor": []
+}

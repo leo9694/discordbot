@@ -3,11 +3,61 @@
     {
       "id": "288430858858266624",
       "nick": "Ninguém",
-      "forca": "50",
-      "defesa": "35",
+      "forca": "545",
+      "defesa": "sds",
       "agilidade": "150",
       "individualidade": "78",
       "total_fisico": "213"
+    }
+  ],
+  "skill": [
+    {
+      "id": "288430858858266624",
+      "comando": "fogo",
+      "comandoPlus": "fogo+",
+      "skill": "aaaaa",
+      "nome": "Bola de fogo",
+      "descricao": "Uma flecha flamejante que rasga o céu e vai em direção ao alvo."
+    },
+    {
+      "id": "252178488805556234",
+      "comando": "Corte",
+      "comandoPlus": "Corte+",
+      "skill": "",
+      "nome": "",
+      "descricao": ""
+    },
+    {
+      "id": "288430858858266624",
+      "comando": "corte-simples",
+      "comandoPlus": "corte-simples+",
+      "skill": "",
+      "nome": "Corte simples",
+      "descricao": "Rods mama eu"
+    },
+    {
+      "id": "252178488805556234",
+      "comando": "corte-simples",
+      "comandoPlus": "corte-simples+",
+      "skill": "",
+      "nome": "",
+      "descricao": ""
+    },
+    {
+      "id": "288430858858266624",
+      "comando": "clone",
+      "comandoPlus": "clone+",
+      "skill": "",
+      "nome": "Clone das sombras",
+      "descricao": "Cria um clone a sua forma e semelhança q se desfaz caso tome ataque"
+    },
+    {
+      "id": "252178488805556234",
+      "comando": "monarca",
+      "comandoPlus": "monarca+",
+      "skill": "",
+      "nome": "Monarca das Sombras",
+      "descricao": "Revive mortos"
     }
   ]
 }

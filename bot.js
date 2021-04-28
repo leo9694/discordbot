@@ -22,8 +22,10 @@ client.on("message", async message => {
     if(message.channel.type === "dm") return;
     if(!message.content.startsWith(config.prefix)) return;
 
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);  
   const comando = args.shift().toLowerCase();
+  args.shift;
+  const resposta = args.join(' ')
   
 
   if(comando === "status") {
@@ -123,7 +125,69 @@ client.on("message", async message => {
   if(comando === "perfil"){
     db.get(message.guild.id).remove({id: message.author.id}).write()
   }
- 
-  
+
+
+  //criar skill
+ if(comando === "criarskill"){
+   if(!args[0])return message.channel.send('Você esqeceu do argumento ')
+   let [novonome] = args
+   db.get("skill").push({
+      id: message.author.id,
+      comando: novonome,
+      comandoPlus: `${novonome}+`,
+      skill:"",
+      nome:"",
+      descricao:""
+      
+    }).write()     
+    message.channel.send(`Comando '${novonome}' criado!`)        
+ }
+
+
+ if(comando.indexOf("+") !== -1){
+   var comando_acao = comando.split("+");
+   console.log(resposta)
+   let comandos=comando_acao[0]
+   let acao=comando_acao[1]
+   let com = db.get("skill").find({comando: comandos}).value()
+   if(com!=undefined){      
+      if(comandos===com["comando"]){ 
+         if(!args[0])return message.channel.send('Você esqeceu do argumento ')
+         let novonome = resposta
+         switch(acao){
+            case "nome":
+               db.get("skill").find({comando: comandos}).assign({nome: novonome}).write()
+               message.channel.send('Nome criada')  
+            break;
+            case "descricao":
+               db.get("skill").find({comando: comandos}).assign({descricao: novonome}).write()
+               message.channel.send('Descrição criada')  
+            break
+            default:
+               message.channel.send('Atributo invalido')  
+         }
+         
+         
+        
+        
+          
+      }else{
+         message.channel.send(`Comando`) 
+      } 
+   }
+ }else{
+   let com = db.get("skill").find({comando: comando}).value()
+   if(com!=undefined){
+      if(comando===`${com["comando"]}`){
+         let msn=''
+         msn+=`ㅤㅤㅤㅤㅤㅤㅤㅤㅤ           **${com["nome"]}**\n`
+         msn+=`➤**Descrição:** ${com["descricao"]} \n`
+         msn+=`ㅤㅤㅤㅤㅤ ㅤㅤ⎧ᥨ䨻䨻䨻䨻᥊「 Efeitos 」᥊䨻䨻䨻䨻⎞⎰`
+
+        message.channel.send(msn)   
+      }
+   }
+ }
+
 });
 client.login(config.token)

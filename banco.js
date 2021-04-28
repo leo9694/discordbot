@@ -10,7 +10,7 @@ db.set('servidor', []).write()
 
 //postar
 db.get('servidor2').push({
-    id: "1",
+    id: "2",
     nick: "pedro",
     avatar: "link.com/avatar.png"
 }).write()

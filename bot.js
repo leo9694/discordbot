@@ -27,7 +27,7 @@ client.on("message", async message => {
   args.shift;
   const resposta = args.join(' ')
   
-
+//STATUS
   if(comando === "status") {
     valor = db.get("status").find({id: message.author.id}).value()
     console.log(valor)
@@ -44,10 +44,6 @@ client.on("message", async message => {
           }).write()   
           message.channel.send(`status criado`)        
     }else{
-        // ➤ Agilidade [AGI]: 
-        // ➤ Individualidade [IND]
-        // ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-        // ➤ Total Físico [TOTF]: 
         let msn=""
         msn+="----------------------------------------\n"
         msn+="- - - - - - Atributos Físicos - - - - - -\n"
@@ -59,60 +55,44 @@ client.on("message", async message => {
         msn+="- - - - - - Atributos Mentais - - - - - - \n "
         msn+="----------------------------------------\n"        
         msn+=""
-        message.channel.send(msn)
-        
-    }   
-        // db.get(message.guild.id).push({
-        //     id: message.author.id,
-        //     nick: message.author.username,      
-        //     avatar: message.author.displayAvatarURL,
-        //     status: ''
-        //   }).write()   
-        //   message.channel.send(`status criado`)
-    }
-    if(comando === "ff"){
-        if(!args[0])return message.channel.send('Você esqeceu do argumento ')
-        let [novonome] = args
-        db.get("status").find({id: message.author.id}).assign({forca: novonome}).write()
-        message.channel.send('Atualizado!!')
-     }
-     if(comando === "def"){
-        if(!args[0])return message.channel.send('Você esqeceu do argumento ')
-        let [novonome] = args
-        db.get("status").find({id: message.author.id}).assign({defesa: novonome}).write()
-        message.channel.send('Atualizado!!')
-     }
-     if(comando === "agi"){
-        if(!args[0])return message.channel.send('Você esqeceu do argumento ')
-        let [novonome] = args
-        db.get("status").find({id: message.author.id}).assign({agilidade: novonome}).write()
-        message.channel.send('Atualizado!!')
-     }
-     if(comando === "ind"){
-        if(!args[0])return message.channel.send('Você esqeceu do argumento ')
-        let [novonome] = args
-        db.get("status").find({id: message.author.id}).assign({individualidade: novonome}).write()
-        message.channel.send('Atualizado!!')
-     }
-     if(comando === "totf"){
-        if(!args[0])return message.channel.send('Você esqeceu do argumento ')
-        let [novonome] = args
-        db.get("status").find({id: message.author.id}).assign({total_fisico: novonome}).write()
-        message.channel.send('Atualizado!!')
-     }
-    
-    if(comando === "editar"){
-        if(!args[0])return message.channel.send('Você esqeceu do argumento ')
-        let [novonome] = args
-        db.get(message.guild.id).find({id: message.author.id}).assign({nick: novonome}).write()
-        message.channel.send('Perfil editado com sucesso!')
-     }
-    if(comando === "editar"){
-        if(!args[0])return message.channel.send('Você esqeceu do argumento ')
-        let [novonome] = args
-        db.get(message.guild.id).find({id: message.author.id}).assign({nick: novonome}).write()
-        message.channel.send('Perfil editado com sucesso!')
-     }
+        message.channel.send(msn)        
+    }     
+   }  
+//comandos add status
+    switch(comando){
+      case "ff":
+         db.get("status").find({id: message.author.id}).assign({forca: args}).write()
+         message.channel.send('FF atualizado!')  
+      break;
+      case "def":
+         db.get("status").find({id: message.author.id}).assign({defesa: args}).write()
+         message.channel.send('DEf atualizado!')  
+      break;
+      case "agi":
+         db.get("status").find({id: message.author.id}).assign({agilidade: args}).write()
+         message.channel.send('AGI atualizado!')  
+      break;  
+      case "ind":
+         db.get("status").find({id: message.author.id}).assign({individualidade: args}).write()
+         message.channel.send('IND atualizado!')  
+      break;
+      case "totf":
+         db.get("status").find({id: message.author.id}).assign({total_fisico: args}).write()
+         message.channel.send('totf atualizado!')  
+      break;
+      
+      
+      // case "":
+      //    db.get("").find({id: message.author.id}).assign({: args}).write()
+      //    message.channel.send(' atualizado!')  
+      // break;             
+   }  
+
+
+//Criar ficha 
+
+
+
   if(comando === "editar"){
     if(!args[0])return message.channel.send('Você esqeceu do argumento ')
     let [novonome] = args

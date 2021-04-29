@@ -1,13 +1,25 @@
 {
+  "ficha":[],
   "status": [
     {
       "id": "288430858858266624",
       "nick": "Ninguém",
-      "forca": "545",
-      "defesa": "sds",
+      "forca": [
+        "120"
+      ],
+      "defesa": "200",
       "agilidade": "150",
       "individualidade": "78",
       "total_fisico": "213"
+    },
+    {
+      "id": "252178488805556234",
+      "nick": "Rods",
+      "forca": "",
+      "defesa": "",
+      "agilidade": "",
+      "individualidade": "",
+      "total_fisico": ""
     }
   ],
   "skill": [
@@ -17,7 +29,7 @@
       "comandoPlus": "fogo+",
       "skill": "aaaaa",
       "nome": "Bola de fogo",
-      "descricao": "Uma flecha flamejante que rasga o céu e vai em direção ao alvo."
+      "descricao": "https://cdn.discordapp.com/attachments/835845428913111071/837333924849516596/a52d40b0eb0b8045f14ea207ba68de91.jpg"
     },
     {
       "id": "252178488805556234",
@@ -58,6 +70,22 @@
       "skill": "",
       "nome": "Monarca das Sombras",
       "descricao": "Revive mortos"
+    },
+    {
+      "id": "288430858858266624",
+      "comando": "tapa",
+      "comandoPlus": "tapa+",
+      "skill": "",
+      "nome": "Tapão",
+      "descricao": "Te dou um tapão"
+    },
+    {
+      "id": "288430858858266624",
+      "comando": "teste",
+      "comandoPlus": "teste+",
+      "skill": "",
+      "nome": "Tapão\n➤Descrição: Te dou um tapão \nㅤㅤㅤㅤㅤ ㅤㅤ⎧ᥨ䨻䨻䨻䨻᥊「 Efeitos 」᥊䨻䨻䨻䨻⎞⎰",
+      "descricao": ""
     }
   ]
 }

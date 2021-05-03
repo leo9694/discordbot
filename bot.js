@@ -16,8 +16,7 @@ db.set("status", []).write()
 })
 
 
-client.on("message", async message => {
-
+client.on("message", async message => {   
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
     if(!message.content.startsWith(config.prefix)) return;
@@ -87,6 +86,26 @@ client.on("message", async message => {
       //    message.channel.send(' atualizado!')  
       // break;             
    }  
+
+
+
+   //comandos random
+
+   const member = message.guild.member(message)
+   message.channel.roles
+switch (comando){
+      case "log":        
+         message.channel.send()  
+         console.log(member._roles)
+         return
+      break; 
+      case 'ficha':
+         db.get("ficha").push({
+            permissoes: member._roles
+          }).write()   
+      break;
+}
+
 
 
 //Criar ficha 

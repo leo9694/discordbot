@@ -9,26 +9,12 @@
       ],
       "descricao": "➤ Nome:Leonardo Gabriel\n➤ Nível: 23\n➤ HP:78000",
       "attr": "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Físicos ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Força [FF]: 5700\n➤ Defesa [DEF]: 8000\n➤ Agilidade [AGI]: 3000\n➤ Individualidade [IND] 1500\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Mentais ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Força de Vontade [FV]:100\n➤ Inteligência [INT]:8000\n➤ Análise [ANAL] (pqsim): 15000 \n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Marciais ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Combate com Arma Branca [CAB]:\n➤ Combate com Arma de Fogo [CAF]:\n➤ Combate com Artes Marciais [CAM]: 150\n➤ Combate Especialista em Individualidade [CEI]: 200\n➤ Proficiência em Testes [TEST]:80",
-      "titulo": "Heroi",
+      "funcao": "Heroi",
       "status": "",
       "historia": "O irmão mais velho de quarto irmão, sempre animado mas bastante preguiçoso, cresceu em uma cidade do interior e sempre fez o necessario pra estar onde está!",
       "aparencia": "https://cdn.discordapp.com/attachments/839476218947567686/839659763179847691/latest.png",
       "quirk": "Gigantificação, consegue aumentar todo o tamanho de seu corpo, tanto totalmente quanto por partes."
-    },
-    {
-      "id": 1,
-      "comando": "Nome_do_NPC",
-      "permissoes": [
-        "834960983797399623"
-      ],
-      "descricao": "",
-      "attr": "",
-      "titulo": "",
-      "status": "",
-      "historia": "",
-      "aparencia": "",
-      "quirk": ""
-    }
+    }   
   ],
   "comandos": [
     {

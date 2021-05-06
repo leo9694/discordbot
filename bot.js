@@ -166,7 +166,7 @@ switch (comando){
             permissoes: [adm],
             descricao: '' ,
             attr:'',
-            titulo: '',
+            funcao: '',
             status: '',
             historia: '',
             aparencia: '',
@@ -178,7 +178,7 @@ switch (comando){
          let m='``'
          valor =  db.get("ficha_npc").value()         
          valor.forEach(v=>{
-            m+=`/${v["comando"]}\n`
+            m+=`/${v["comando"]}-descricao\n`
          })
          m+='``'
          return message.channel.send(m)
@@ -277,10 +277,10 @@ if(ficha!=undefined){
             db.get("ficha_npc").find({comando: comandos}).assign({aparencia: resposta}).write()
             message.channel.send('Aparencia adicionado') 
          break;
-         case 'add_titulo':
+         case 'add_funcao':
             if (verificar_permissao(ficha["permissoes"])==0) return message.channel.send('Permissao negada')
-            db.get("ficha_npc").find({comando: comandos}).assign({titulo: resposta}).write()
-            message.channel.send('Titulo adicionado') 
+            db.get("ficha_npc").find({comando: comandos}).assign({funcao: resposta}).write()
+            message.channel.send('Função adicionado') 
          break;
          case 'add_historia':
             if (verificar_permissao(ficha["permissoes"])==0) return message.channel.send('Permissao negada')
@@ -297,7 +297,7 @@ if(ficha!=undefined){
             men+=`${ficha["aparencia"]}\n`  
             men+="```"         
             men+=`${ficha["descricao"]}\n`            
-            men+=`➤ Titulo: ${ficha["titulo"]}\n`
+            men+=`➤ Função: ${ficha["funcao"]}\n`
             men+=`➤ História: ${ficha["historia"]}\n`
             men+=`➤ Quirk: ${ficha["quirk"]}`
             men+="```\n"            

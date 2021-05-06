@@ -159,10 +159,11 @@ switch (comando){
       case 'ficha_npc':
          if (resposta=='') return message.channel.send('Digite o nome do comando!')         
          if (verificar_permissao(adm)==0) return message.channel.send('Permissao negada')
+         if (db.get("ficha_npc").find({comando: resposta.toLocaleLowerCase()}).value()!=undefined) return message.channel.send('Ja possui um npc com esse comando!')
          valor =  db.get("ficha_npc").value()         
          db.get("ficha_npc").push({
             id: contador(valor),
-            comando: resposta,      
+            comando: resposta.toLowerCase(),      
             permissoes: [adm],
             descricao: '' ,
             attr:'',
@@ -183,8 +184,13 @@ switch (comando){
          m+='``'
          return message.channel.send(m)
       break
-
-          
+      case 'ficha_npc_rmv':
+         if (resposta=='') return message.channel.send('Digite o nome do comando!')         
+         if (verificar_permissao(adm)==0) return message.channel.send('Permissao negada')
+         if (db.get("ficha_npc").find({comando: resposta}).value()==undefined) return message.channel.send('Ficha não encontrada!')
+         db.get("ficha_npc").remove({comando: resposta}).write()
+         return message.channel.send('Ficha de npc removida')
+      break         
 
 }
 //show comando
@@ -329,7 +335,6 @@ if(ficha!=undefined){
     db.get(message.guild.id).remove({id: message.author.id}).write()
   }
 
-
 //   //criar skill
 //  if(comando === "criarskill"){
 //    if(!args[0])return message.channel.send('Você esqeceu do argumento ')
@@ -393,4 +398,5 @@ if(ficha!=undefined){
 //  }
 
 });
+
 client.login(config.token)

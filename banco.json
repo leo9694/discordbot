@@ -1,4 +1,43 @@
 {
+  "ficha_player": [
+    {
+      "id": 0,
+      "comando": "kayn",
+      "permissoes": [
+        "834960983797399623"
+      ],
+      "descricao": "",
+      "quirk": "",
+      "personalidade": "",
+      "historia": "",
+      "aparencia": ""
+    }
+  ],
+  "status": [
+    {
+      "id": 1,
+      "comando": "kayn",
+      "permissoes": [
+        "834960983797399623"
+      ],
+      "ff": "45",
+      "def": "20",
+      "agi": "35",
+      "ind": "",
+      "totf": "",
+      "fv": "35",
+      "int": "",
+      "anal": "",
+      "totm": "",
+      "cab": "",
+      "caf": "",
+      "cam": "",
+      "cei": "",
+      "test": "",
+      "qtrf": "",
+      "qtrm": ""
+    }
+  ],
   "ficha_npc": [
     {
       "id": 0,
@@ -40,37 +79,6 @@
       ],
       "descricao": "``Testado``\nhttps://tenor.com/view/tsukki-deku-makoto-daily-anime-gif-19543583",
       "nome": ""
-    }
-  ],
-  "status": [
-    {
-      "id": "288430858858266624",
-      "nick": "Ninguém",
-      "forca": [],
-      "defesa": "200",
-      "agilidade": "150",
-      "individualidade": "78",
-      "total_fisico": "213"
-    },
-    {
-      "id": "252178488805556234",
-      "nick": "Rods",
-      "forca": "",
-      "defesa": "",
-      "agilidade": "",
-      "individualidade": "",
-      "total_fisico": ""
-    },
-    {
-      "id": "839484101937070112",
-      "nick": "Lived",
-      "forca": [
-        "lived"
-      ],
-      "defesa": "",
-      "agilidade": "",
-      "individualidade": "",
-      "total_fisico": ""
     }
   ],
   "skill": [

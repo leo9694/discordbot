@@ -6,6 +6,7 @@ const low = require('lowdb') //banco de dados
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('banco.json')
 const db = low(adapter)
+const status_comandos=['ff','def','agi','ind','totf','fv','int','anal','totm','cab','caf','cam','cei','test','qtrf','qtrm']
 
 client.on("ready", () => {
 console.log('Olá Mundo')
@@ -28,7 +29,7 @@ client.on("message", async message => {
   const adm = '834960983797399623'
   
 //STATUS
-  if(comando === "status") {
+  if(comando === "") {
     valor = db.get("status").find({id: message.author.id}).value()
     console.log(valor)
     if(valor === undefined){
@@ -131,7 +132,60 @@ function contador(elementos){
    return i
 }
 
-switch (comando){     
+switch (comando){ 
+      case "status_comandos":        
+         let n='``'              
+         status_comandos.forEach(v=>{
+            n+=`/${v}\n`
+         })
+         n+='``'
+         return message.channel.send(n)
+      break
+      case "ficha":
+         if (resposta=='') return message.channel.send('Digite o nome do comando!')         
+         if (verificar_permissao(adm)==0) return message.channel.send('Permissao negada')
+         if (db.get("ficha_npc").find({comando: resposta.toLocaleLowerCase()}).value()!=undefined) return message.channel.send('Ja possui um NPC com esse comando!')
+         if (db.get("ficha_player").find({comando: resposta.toLocaleLowerCase()}).value()!=undefined) return message.channel.send('Ja possui um player com esse comando!')
+         valor =  db.get("ficha_player").value()         
+         db.get("ficha_player").push({
+            id: contador(valor),
+            comando: resposta.toLowerCase(),      
+            permissoes: [adm],
+            descricao: '' ,
+            quirk:'',            
+            personalidade: '',
+            historia: '',
+            aparencia: ''              
+          }).write()  
+          db.get("status").push({
+            id: contador(valor),
+            comando: resposta.toLowerCase(),      
+            permissoes: [adm],
+            ff: '' ,
+            def:'',            
+            agi: '',
+            ind: '',
+            totf: '',
+            fv:'',
+            int:'',
+            anal:'',
+            totm:'',
+            cab:'',
+            caf:'',
+            cam:'',
+            cei:'',
+            test:'',
+            qtrf:'',
+            qtrm:''              
+          }).write()         
+          return  message.channel.send(`Player adicionado, teste o comando /${resposta.toLowerCase()} e /${resposta.toLowerCase()}-ficha`) 
+      break 
+      case 'log':
+         valor =  db.get("ficha_npc").value()
+         console.log(Object.keys(valor))
+         return message.channel.send(`Meu id: ${message.author.id}`)
+         
+      break;   
       case "comando":         
       if (resposta=='') return message.channel.send('Digite o nome do comando!')
       if (verificar_permissao(adm)==0) return message.channel.send('Permissao negada')
@@ -219,6 +273,22 @@ if(ficha!=undefined){
             message.channel.send(men)
    }
 }
+//show status
+let statu = db.get("status").find({comando: comando}).value()
+if(statu!=undefined){  
+   if(comando==statu["comando"]){  
+      if (verificar_permissao(statu["permissoes"])==0) return message.channel.send('Permissao negada')     
+      let texto=''      
+      status_comandos.forEach(s=>{
+         texto+= `${s}: `
+         texto+=statu[`${s}`]
+         texto+='\n'
+      })
+      message.channel.send(texto)   
+            
+   }
+}
+
 //ediçoes nos comandos em geral
 
  if(comando.indexOf("-") !== -1){   
@@ -261,7 +331,7 @@ if(ficha!=undefined){
    if (ficha!= undefined){        
       let novonome = resposta
       switch(acao){
-         case 'permissao':
+         case 'add_permissao':
             if (verificar_permissao(ficha["permissoes"])==0) return message.channel.send('Permissao negada')
             permissoes=ficha["permissoes"]
                permissoes.push(novonome)
@@ -308,17 +378,33 @@ if(ficha!=undefined){
             men+=`➤ Quirk: ${ficha["quirk"]}`
             men+="```\n"            
             message.channel.send(men)
-         break;
-        
+         break;        
       }
 
    }
+   let status = db.get("status").find({comando: comandos}).value()
+   if (status!= undefined){        
+      let novonome = resposta
+      status_comandos
+      status_comandos.forEach(s=>{
+         if(acao==s){
+            //add status
+            if (verificar_permissao(status["permissoes"])==0) return message.channel.send('Permissao negada')           
+            status[`${s}`] = resposta;
+            db.get("status").find({comando: comandos}).assign(status).write()
+            message.channel.send(`${s} atualizado!`)
+         }        
+      })
+   }   
  }
 
  
 
-//Criar ficha
+//Criar ficha player
  
+
+
+
 
 
 

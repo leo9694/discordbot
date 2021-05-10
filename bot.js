@@ -6,7 +6,8 @@ const low = require('lowdb') //banco de dados
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('banco.json')
 const db = low(adapter)
-const status_comandos=['ff','def','agi','ind','totf','fv','int','anal','totm','cab','caf','cam','cei','test','qtrf','qtrm']
+const status_comandos=['ff','def','agi','ind','totf','pu','int','anal','totm','cab','caf','cam','cei','test','qtrf','qtrm']
+const ficha_comandos=['descricao','quirk','personalidade','historia','aparencia']
 
 client.on("ready", () => {
 console.log('Olá Mundo')
@@ -26,68 +27,9 @@ client.on("message", async message => {
   const comando = args.shift().toLowerCase();
   args.shift;
   const resposta = args.join(' ')
-  const adm = '834960983797399623'
-  
-//STATUS
-  if(comando === "") {
-    valor = db.get("status").find({id: message.author.id}).value()
-    console.log(valor)
-    if(valor === undefined){
-        db.get("status").push({
-            id: message.author.id,
-            nick: message.author.username,      
-            avatar: message.author.displayAvatarURL,
-            forca: '',
-            defesa: '',
-            agilidade: '',
-            individualidade: '',
-            total_fisico: '', 
-          }).write()   
-          message.channel.send(`status criado`)        
-    }else{
-        let msn=""
-        msn+="----------------------------------------\n"
-        msn+="- - - - - - Atributos Físicos - - - - - -\n"
-        msn+=`➤ Força [FF]: **{${valor["forca"]}}**\n➤ Defesa [DEF]: **{${valor["defesa"]}}**\n`
-        msn+=`➤ Agilidade [AGI]: **{${valor["agilidade"]}}**\n➤ Individualidade [IND]: **{${valor["individualidade"]}}**\n`
-        msn+="-----------------------------------------\n"
-        msn+=`➤ Total Físico [TOTF]: **{${valor["total_fisico"]}}**\n`
-        msn+="-----------------------------------------\n"
-        msn+="- - - - - - Atributos Mentais - - - - - - \n "
-        msn+="----------------------------------------\n"        
-        msn+=""
-        message.channel.send(msn)        
-    }     
-   }  
-//comandos add status
-    switch(comando){
-      case "ff":
-         db.get("status").find({id: message.author.id}).assign({forca: args}).write()
-         message.channel.send('FF atualizado!')  
-      break;
-      case "def":
-         db.get("status").find({id: message.author.id}).assign({defesa: args}).write()
-         message.channel.send('DEf atualizado!')  
-      break;
-      case "agi":
-         db.get("status").find({id: message.author.id}).assign({agilidade: args}).write()
-         message.channel.send('AGI atualizado!')  
-      break;  
-      case "ind":
-         db.get("status").find({id: message.author.id}).assign({individualidade: args}).write()
-         message.channel.send('IND atualizado!')  
-      break;
-      case "totf":
-         db.get("status").find({id: message.author.id}).assign({total_fisico: args}).write()
-         message.channel.send('totf atualizado!')  
-      break;
-      
-      
-      // case "":
-      //    db.get("").find({id: message.author.id}).assign({: args}).write()
-      //    message.channel.send(' atualizado!')  
-      // break;             
-   }  
+  const adm = '834960983797399623' 
+
+
 
 
 
@@ -166,7 +108,7 @@ switch (comando){
             agi: '',
             ind: '',
             totf: '',
-            fv:'',
+            pu:'',
             int:'',
             anal:'',
             totm:'',
@@ -278,16 +220,43 @@ let statu = db.get("status").find({comando: comando}).value()
 if(statu!=undefined){  
    if(comando==statu["comando"]){  
       if (verificar_permissao(statu["permissoes"])==0) return message.channel.send('Permissao negada')     
-      let texto=''      
-      status_comandos.forEach(s=>{
-         texto+= `${s}: `
-         texto+=statu[`${s}`]
-         texto+='\n'
-      })
+      let texto=''       
+         texto+= '```\n'
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈Atributos Físicos┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`➤ Força [ff]: ${statu.ff}\n`
+         texto+=`➤ Defesa [def]: ${statu.def}\n`
+         texto+=`➤ Agilidade [agi]: ${statu.agi}\n`
+         texto+=`➤ Individualidade [ind]: ${statu.ind}\n`
+         texto+=`➤ Total Físico [totf]: ${statu.totf}\n`         
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈Atributos Mentais┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`➤ Plus Ultra [pu]: ${statu.pu}\n`
+         texto+=`➤ Inteligência [int]: ${statu.int}\n`
+         texto+=`➤ Análise [anal]: ${statu.anal}\n`
+         texto+=`➤ Total Mental [totm]: ${statu.totm}\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈Atributos marciais┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`➤ Combate com Arma Branca [cab]: ${statu.cab}\n`
+         texto+=`➤ Combate com Arma de Fogo [caf]: ${statu.caf}\n`
+         texto+=`➤ Combate com Artes Marciais [cam]: ${statu.cam}\n`
+         texto+=`➤ Combate Especialista em Individualidade [cei]: ${statu.cei}\n`
+         texto+=`➤ Proficiência em Testes [test]: ${statu.test}\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈Treinos┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`➤ Quantidade de treinos físicos realizados [qtrf]${statu.qtrf}\n`
+         texto+=`➤ Quantidade de treinos mentais realizados [qtrm]:${statu.qtrm}\n`
+
+         texto+= '```\n'     
       message.channel.send(texto)   
             
    }
 }
+
 
 //ediçoes nos comandos em geral
 
@@ -326,7 +295,7 @@ if(statu!=undefined){
             
          }              
    }
-   // ficha edição   
+   // ficha_npc edição   
    let ficha = db.get("ficha_npc").find({comando: comandos}).value()
    if (ficha!= undefined){        
       let novonome = resposta
@@ -384,8 +353,7 @@ if(statu!=undefined){
    }
    let status = db.get("status").find({comando: comandos}).value()
    if (status!= undefined){        
-      let novonome = resposta
-      status_comandos
+      let novonome = resposta      
       status_comandos.forEach(s=>{
          if(acao==s){
             //add status
@@ -395,12 +363,58 @@ if(statu!=undefined){
             message.channel.send(`${s} atualizado!`)
          }        
       })
-   }   
+      if(acao=='permissoes'){
+         if (verificar_permissao(status["permissoes"])==0) return message.channel.send('Permissao negada')               
+         permissoes=status["permissoes"]
+         permissoes.push(novonome)
+         db.get("status").find({comando: comandos}).assign({permissoes: permissoes}).write()
+         db.get("ficha_player").find({comando: comandos}).assign({permissoes: permissoes}).write()         
+         message.channel.send('Permissão adicionada') 
+      }
+      if(acao=='rmv'){
+         if (verificar_permissao(adm)==0) return message.channel.send('Permissao negada')
+         db.get("status").remove({comando: comandos}).write()
+         db.get("ficha_player").remove({comando: comandos}).write()
+         message.channel.send(`ficha ${comandos} removida!`) 
+
+      }     
+   }  
+   
+   let fixa = db.get("ficha_player").find({comando: comandos}).value()
+   if (fixa!= undefined){        
+      let novonome = resposta
+      ficha_comandos.forEach(s=>{
+         if(acao==s){
+            //add ficha_player
+            if (verificar_permissao(fixa["permissoes"])==0) return message.channel.send('Permissao negada')           
+            fixa[`${s}`] = resposta;
+            db.get("ficha_player").find({comando: comandos}).assign(fixa).write()
+            message.channel.send(`${s} atualizado!`)
+         }        
+      })
+      if(acao=='ficha'){
+         if (verificar_permissao(fixa["permissoes"])==0) return message.channel.send('Permissao negada')     
+         let texto='```\n'   
+         texto+=`Ficha de personagem\n`  
+         texto+=`${fixa["descricao"]}\n`
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`
+         texto+=`${fixa["quirk"]}\n` 
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n` 
+         texto+=`${fixa["personalidade"]}\n` 
+         texto+=`${fixa["historia"]}\n` 
+         texto+=`┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n`          
+         texto+='```' 
+         texto+=`${fixa["aparencia"]}`        
+         message.channel.send(texto)   
+      }
+   } 
+
+
  }
 
  
 
-//Criar ficha player
+
  
 
 

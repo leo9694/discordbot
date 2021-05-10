@@ -4,13 +4,26 @@
       "id": 0,
       "comando": "kayn",
       "permissoes": [
+        "834960983797399623",
         "834960983797399623"
       ],
-      "descricao": "",
-      "quirk": "",
-      "personalidade": "",
+      "descricao": "➤ Nome: Kayn Zenytsu\n➤ Nome de Herói: [Eden]\n➤ Idade 13 á 16: 15-16\n➤ Gênero: Masculino\n➤ Aniversário: 16/08\n➤ Altura: * 1,82 m*\n➤ Peso: * 85 KG *",
+      "quirk": "➤ Individualidade: Not inviable\n➤ Explicação sobre a individualidade: Fica desabilitado",
+      "personalidade": "➤ Personalidade: Monge sulista",
+      "historia": "➤ Historia: Monge",
+      "aparencia": "https://cdn.discordapp.com/attachments/835845428913111071/840191745815740456/2552ce326b1a6bc1c322775001e476d2c671b46cr1-750-750v2_hq.png"
+    },
+    {
+      "id": 1,
+      "comando": "nasod",
+      "permissoes": [
+        "834960983797399623"
+      ],
+      "descricao": "➤ Nome: Anteres Nasod\n➤ Nome de Herói: [Barrer]\n➤ Idade 13 á 16: 15-16\n➤ Gênero: Masculino\n➤ Aniversário: 16/06\n➤ Altura: * 1,68 m*\n➤ Peso: * 50 KG *",
+      "quirk": "➤ Individualidade: Barreira\n➤ Explicação sobre a individualidade: Consiste na capacidade de criar barrerias de energia de diversos tamanhos[Quantidade de barreiras, e tamanho máximo e minimo das barreiras a ser decidida pela staff]. Essas barreiras possue propriedades como devido a natureza energética, queimar até certo ponto quem a toca e em alguns pontos fazer sua energia 'escapar por onde ele havia sido atacada' [as barreiras emitem \n um certo brilho que fica mais intenso quanto mai forte é, e é possível controlar o grau de dano que ela causa]",
+      "personalidade": "➤ Personalidade: Um garoto levemente inocente e prestativo, meio retardado e apaixonado pelo espaço. Odeia coco e seu derivados.[ainda vou desenvolver melhor essa personalidade], também levemente orgulhoso e relativamente bastante inteligente.",
       "historia": "",
-      "aparencia": ""
+      "aparencia": "https://cdn.discordapp.com/attachments/840207645221978142/840943235983867924/01cdef760aefc6ae60aed53874322103.png"
     }
   ],
   "status": [
@@ -18,14 +31,38 @@
       "id": 1,
       "comando": "kayn",
       "permissoes": [
+        "834960983797399623",
         "834960983797399623"
       ],
       "ff": "45",
       "def": "20",
       "agi": "35",
-      "ind": "",
+      "ind": "80",
+      "totf": "250",
+      "pu": "10",
+      "int": "5",
+      "anal": "12",
+      "totm": "27",
+      "cab": "21",
+      "caf": "4",
+      "cam": "78",
+      "cei": "423",
+      "test": "13",
+      "qtrf": "80",
+      "qtrm": "89"
+    },
+    {
+      "id": 2,
+      "comando": "nasod",
+      "permissoes": [
+        "834960983797399623"
+      ],
+      "ff": "100",
+      "def": "",
+      "agi": "",
+      "ind": "20000",
       "totf": "",
-      "fv": "35",
+      "pu": "",
       "int": "",
       "anal": "",
       "totm": "",

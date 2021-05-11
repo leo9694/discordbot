@@ -337,7 +337,7 @@ if(statu!=undefined){
             db.get("ficha_npc").find({comando: comandos}).assign({quirk: resposta}).write()
             message.channel.send('Quirk adicionado') 
          break;
-         case 'descricao':            
+         case 'ficha':            
             let men='' 
             men+=`${ficha["aparencia"]}\n`  
             men+="```"         

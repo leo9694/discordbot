@@ -11,7 +11,7 @@ const status_comandos=['ff','def','agi','ind','totf','pu','int','anal','totm','c
 const ficha_comandos=['descricao','quirk','personalidade','historia','aparencia']
 const bot_attr=['nome','rank','aparencia','descricao','permissoes']
 const bot_skill=['comando','nome','descricao','cd','aparencia','categoria','alcance','dano','efeitos','anula','fraquezas']
-
+//est
 client.on("ready", () => {
 console.log('Olá Mundo')
 })

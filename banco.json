@@ -1,187 +1,81 @@
 {
-  "ficha_player": [
-    {
-      "id": 0,
-      "comando": "kayn",
-      "permissoes": [
-        "834960983797399623",
-        "834960983797399623"
-      ],
-      "descricao": "➤ Nome: Kayn Zenytsu\n➤ Nome de Herói: [Eden]\n➤ Idade 13 á 16: 15-16\n➤ Gênero: Masculino\n➤ Aniversário: 16/08\n➤ Altura: * 1,82 m*\n➤ Peso: * 85 KG *",
-      "quirk": "➤ Individualidade: Not inviable\n➤ Explicação sobre a individualidade: Fica desabilitado",
-      "personalidade": "➤ Personalidade: Monge sulista",
-      "historia": "➤ Historia: Monge",
-      "aparencia": "https://cdn.discordapp.com/attachments/835845428913111071/840191745815740456/2552ce326b1a6bc1c322775001e476d2c671b46cr1-750-750v2_hq.png"
-    },
-    {
-      "id": 1,
-      "comando": "nasod",
-      "permissoes": [
-        "834960983797399623"
-      ],
-      "descricao": "➤ Nome: Anteres Nasod\n➤ Nome de Herói: [Barrer]\n➤ Idade 13 á 16: 15-16\n➤ Gênero: Masculino\n➤ Aniversário: 16/06\n➤ Altura: * 1,68 m*\n➤ Peso: * 50 KG *",
-      "quirk": "➤ Individualidade: Barreira\n➤ Explicação sobre a individualidade: Consiste na capacidade de criar barrerias de energia de diversos tamanhos[Quantidade de barreiras, e tamanho máximo e minimo das barreiras a ser decidida pela staff]. Essas barreiras possue propriedades como devido a natureza energética, queimar até certo ponto quem a toca e em alguns pontos fazer sua energia 'escapar por onde ele havia sido atacada' [as barreiras emitem \n um certo brilho que fica mais intenso quanto mai forte é, e é possível controlar o grau de dano que ela causa]",
-      "personalidade": "➤ Personalidade: Um garoto levemente inocente e prestativo, meio retardado e apaixonado pelo espaço. Odeia coco e seu derivados.[ainda vou desenvolver melhor essa personalidade], também levemente orgulhoso e relativamente bastante inteligente.",
-      "historia": "",
-      "aparencia": "https://cdn.discordapp.com/attachments/840207645221978142/840943235983867924/01cdef760aefc6ae60aed53874322103.png"
-    }
-  ],
-  "status": [
-    {
-      "id": 1,
-      "comando": "kayn",
-      "permissoes": [
-        "834960983797399623",
-        "834960983797399623"
-      ],
-      "ff": "45",
-      "def": "20",
-      "agi": "35",
-      "ind": "80",
-      "totf": "250",
-      "pu": "10",
-      "int": "5",
-      "anal": "12",
-      "totm": "27",
-      "cab": "21",
-      "caf": "4",
-      "cam": "78",
-      "cei": "423",
-      "test": "13",
-      "qtrf": "80",
-      "qtrm": "89"
-    },
-    {
-      "id": 2,
-      "comando": "nasod",
-      "permissoes": [
-        "834960983797399623"
-      ],
-      "ff": "100",
-      "def": "",
-      "agi": "",
-      "ind": "20000",
-      "totf": "",
-      "pu": "",
-      "int": "",
-      "anal": "",
-      "totm": "",
-      "cab": "",
-      "caf": "",
-      "cam": "",
-      "cei": "",
-      "test": "",
-      "qtrf": "",
-      "qtrm": ""
-    }
-  ],
-  "ficha_npc": [
-    {
-      "id": 0,
-      "comando": "leo",
-      "permissoes": [
-        "834960983797399623",
-        "836962947640197140"
-      ],
-      "descricao": "➤ Nome:Leonardo Gabriel\n➤ Nível: 23\n➤ HP:78000",
-      "attr": "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Físicos ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Força [FF]: 5700\n➤ Defesa [DEF]: 8000\n➤ Agilidade [AGI]: 3000\n➤ Individualidade [IND] 1500\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Mentais ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Força de Vontade [FV]:100\n➤ Inteligência [INT]:8000\n➤ Análise [ANAL] (pqsim): 15000 \n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Marciais ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Combate com Arma Branca [CAB]:\n➤ Combate com Arma de Fogo [CAF]:\n➤ Combate com Artes Marciais [CAM]: 150\n➤ Combate Especialista em Individualidade [CEI]: 200\n➤ Proficiência em Testes [TEST]:80",
-      "funcao": "hero",
-      "status": "",
-      "historia": "O irmão mais velho de quarto irmão, sempre animado mas bastante preguiçoso, cresceu em uma cidade do interior e sempre fez o necessario pra estar onde está!",
-      "aparencia": "https://cdn.discordapp.com/attachments/839476218947567686/839659763179847691/latest.png",
-      "quirk": "Gigantificação, consegue aumentar todo o tamanho de seu corpo, tanto totalmente quanto por partes."
-    },
-    {
-      "id": 1,
-      "comando": "shota",
-      "permissoes": [
-        "834960983797399623"
-      ],
-      "descricao": "➤ Nome: Shota Aizawa\n➤ Nome heroi: Eraser Head\n➤ Nível: XXX\n➤ HP: XXX",
-      "attr": "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Físicos ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Força [FF]: \n➤ Defesa [DEF]: \n➤ Agilidade [AGI]: \n➤ Individualidade [IND]\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Mentais ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Força de Vontade [FV]:\n➤ Inteligência [INT]:\n➤ Análise [ANAL] (pqsim):\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈ Atributos Marciais ┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n➤ Combate com Arma Branca [CAB]:\n➤ Combate com Arma de Fogo [CAF]:\n➤ Combate com Artes Marciais [CAM]:\n➤ Combate Especialista em Individualidade [CEI]:\n➤ Proficiência em Testes [TEST]:",
-      "funcao": "Diretor da U.A.",
-      "status": "",
-      "historia": "",
-      "aparencia": "https://media.discordapp.net/attachments/839476218947567686/839879186863751188/339dbef2b2f6b464ddaf438d36f494d5.png?width=363&height=406",
-      "quirk": ""
-    }
-  ],
   "comandos": [
     {
-      "id": 0,
-      "comando": "teste",
-      "permissoes": [
-        "834960983797399623",
-        "836679762243616826"
-      ],
-      "descricao": "``Testado``\nhttps://tenor.com/view/tsukki-deku-makoto-daily-anime-gif-19543583",
-      "nome": ""
+      "comando": "cadastrarbot"
+    },
+    {
+      "comando": "deletarbot"
+    },
+    {
+      "comando": "log"
+    },
+    {
+      "comando": "comandos"
+    },
+    {
+      "comando": "comoregistrarbot"
     }
   ],
-  "skill": [
+  "cd": [
     {
-      "id": "288430858858266624",
-      "comando": "fogo",
-      "comandoPlus": "fogo+",
-      "skill": "aaaaa",
-      "nome": "Bola de fogo",
-      "descricao": "https://cdn.discordapp.com/attachments/835845428913111071/837333924849516596/a52d40b0eb0b8045f14ea207ba68de91.jpg"
+      "user": "839484101937070112",
+      "comando": "chute",
+      "tempo_final": "09:31"
     },
     {
-      "id": "252178488805556234",
-      "comando": "Corte",
-      "comandoPlus": "Corte+",
-      "skill": "",
+      "user": "288430858858266624",
+      "comando": "chute",
+      "tempo_final": "10:16"
+    }
+  ],
+  "fichas_bots": [
+    {
+      "nome": "Bot F",
+      "permissoes": [
+        "834960983797399623"
+      ],
+      "comando": "botf",
+      "rank": "",
+      "aparencia": "https://media.discordapp.net/attachments/839476218947567686/839477125841027092/Bot_2.gif",
+      "descricao": "adfasfafsadf",
+      "hp_minimo": "7000",
+      "hp_maximo": "8000",
+      "status": {
+        "def": "2000",
+        "ff": "1500",
+        "agi": "1500",
+        "mec": "1500"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "bot_comando": "botf",
+      "comando": "",
       "nome": "",
-      "descricao": ""
+      "descricao": "",
+      "cd": "",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "dano": []
     },
     {
-      "id": "288430858858266624",
-      "comando": "corte-simples",
-      "comandoPlus": "corte-simples+",
-      "skill": "",
-      "nome": "Corte simples",
-      "descricao": "Rods mama eu"
-    },
-    {
-      "id": "252178488805556234",
-      "comando": "corte-simples",
-      "comandoPlus": "corte-simples+",
-      "skill": "",
-      "nome": "",
-      "descricao": ""
-    },
-    {
-      "id": "288430858858266624",
-      "comando": "clone",
-      "comandoPlus": "clone+",
-      "skill": "",
-      "nome": "Clone das sombras",
-      "descricao": "Cria um clone a sua forma e semelhança q se desfaz caso tome ataque"
-    },
-    {
-      "id": "252178488805556234",
-      "comando": "monarca",
-      "comandoPlus": "monarca+",
-      "skill": "",
-      "nome": "Monarca das Sombras",
-      "descricao": "Revive mortos"
-    },
-    {
-      "id": "288430858858266624",
-      "comando": "tapa",
-      "comandoPlus": "tapa+",
-      "skill": "",
-      "nome": "Tapão",
-      "descricao": "Te dou um tapão"
-    },
-    {
-      "id": "288430858858266624",
-      "comando": "teste",
-      "comandoPlus": "teste+",
-      "skill": "",
-      "nome": "Tapão\n➤Descrição: Te dou um tapão \nㅤㅤㅤㅤㅤ ㅤㅤ⎧ᥨ䨻䨻䨻䨻᥊「 Efeitos 」᥊䨻䨻䨻䨻⎞⎰",
-      "descricao": ""
+      "bot_comando": "botf",
+      "comando": "chute",
+      "nome": "Chute",
+      "descricao": "Chute veloz",
+      "cd": "5",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "NDA",
+      "dano": [],
+      "efeitos": "NDA",
+      "fraquezas": "NDA"
     }
   ]
 }

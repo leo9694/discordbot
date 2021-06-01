@@ -10,7 +10,7 @@ const db = low(adapter)
 const status_comandos=['ff','def','agi','ind','totf','pu','int','anal','totm','cab','caf','cam','cei','test','qtrf','qtrm']
 const ficha_comandos=['descricao','quirk','personalidade','historia','aparencia']
 const bot_attr=['nome','rank','aparencia','descricao','permissoes']
-const bot_skill=['comando','nome','descricao','cd','aparencia','categoria','alcance','dano','efeitos','anula','fraquezas']
+const bot_skill=['comando','nome','descricao','cd','aparencia','categoria','alcance','efeitos','anula','fraquezas']
 //est
 client.on("ready", () => {
 console.log('Olá Mundo')
@@ -88,10 +88,14 @@ function retornar_skill(bot, skill){
    }
    
 }
-function retorna_hp(hp_minimo,hp_maximo){
-   console.log(hp_minimo)
+function retorna_hp(hp_minimo,hp_maximo){   
    let randon = parseInt(Math.random() * (hp_maximo - hp_minimo) + hp_minimo)   
     return randon
+}
+function retorna_randon(n){
+   let randon = parseInt(Math.random() * (n - 0) + 0)   
+    return randon
+
 }
 function total(ff,def,ind,mec){
    return ff+def+ind+mec
@@ -112,17 +116,17 @@ function cds(skill){
    cd = db.get("cd").find({comando: skill.comando, user: message.author.id}).value()
    if(cd!=undefined){      
       if(compararHora(hora,cd.tempo_final)==true){
-         cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd), 'minutes').format('hh:mm')
+         cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd)-1, 'minutes').format('hh:mm')
          db.get("cd").find({comando: skill.comando, user: message.author.id}).assign(cd).write()
          return true
       } else{
-         return `Disponivel depois das ${cd.tempo_final}h`
+         return false
       }    
    }else{
       cd =new Object
       cd.user=message.author.id
       cd.comando=skill.comando
-      cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd), 'minutes').format('hh:mm')
+      cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd)-1, 'minutes').format('hh:mm')
       db.get("cd").push(cd).write() 
       return true 
    }
@@ -150,7 +154,7 @@ function view_skill(skill){
    msn+=`------------- **${skill.nome}** -------------         \n`
    msn+=`**➤Descrição:** ${skill.descricao}\n`
    msn+=`**➤Categoria:** ${skill.alcance}\n`
-   msn+=`**➤Dano:** ${skill.dano}\n`
+   msn+=`**➤Dano:** ${skill.status[retorna_randon(3)]}\n`
    msn+=`**➤Efeitos** ${skill.efeito}\n`
    msn+=`**➤Anula:** ${skill.anula}\n`
    msn+=`**➤Fraquezas:** ${skill.fraquezas}\n`
@@ -194,21 +198,35 @@ if (verificar_comando(comando)==true){
              skill.fraquezas=''      
          db.get("fichas_bots").push(bot).write()  
          db.get("skills").push(skill).write() 
-         return message.channel.send(`Bot com o comando "!${bot.comando}" criado!`)
+         return message.channel.send(`Bot com o comando ":${bot.comando}" criado!`)
 
       }else if(comando=='log'){
          return message.channel.send(message.author.id)
       
+      }else if(comando=='comoregistrarbot'){
+         let msn=''
+         msn+='---------------------**`TUTORIAL`**---------------------\n'
+         msn+=`Primeiro vamos criar o comando do bot, o comando sera o codigo q vc vai usar para poder invocar seu robo. Ex de comando: 'botf'\n`
+         msn+=`"**:cadastrarbot botf**" comando para criar robos`
+         msn+=`Agora com o comando do seu robo criado vc deve adicionar as informações do seu robo. Siga as instruçoes e comandos abaixos vamos usar o exemplo citado acima de comando ':botf' mas lembra que sera o comando que vc colocou em seu robo!\n`
+         msn+=`"**:botf-nome Bot F**" com esse comando vc adiciona o nome ao seu robo\n`
+         msn+=`"**:botf-rank F**"  adiciona o rank\n`
+         msn+=`"**:bot-descricao Robo de treinamento**" adiciona uma descrição\n`
+         msn+=`"**:bot-aparencia link.imangem**" adiciona uma aparencia ao seu robo\n`
+         msn+=`"**:bot-status 2000/1500/4000/2000**" adiciona FF/DEF/AGI/MEC exatamente nessa ordem \n`
+         msn+='Pronto seu robo está criado, agora de o comando ":nome_do_seu_robo" para visializar ele\n'
+         return message.channel.send(msn)
+
       }else if(comando=='deletarbot'){
          if(!args[0])return message.channel.send('Vc esqueceu de colocar o comando do seu bot!')
          db.get("fichas_bots").remove({comando: resposta}).write()
          db.get("comandos").remove({comando: resposta}).write()
-         return message.channel.send(`Bot com comando "!${resposta}" deletado!`)
+         return message.channel.send(`Bot com comando ":${resposta}" deletado!`)
       }else if(comando=='comandos'){
          let msn='``'
          valor =  db.get("comandos").value()         
          valor.forEach(v=>{
-            msn+=`!${v.comando}\n`
+            msn+=`:${v.comando}\n`
          })
          msn+='``'
          return message.channel.send(msn)
@@ -223,13 +241,11 @@ if (verificar_comando(comando)==true){
             if (cds(skill)==true){
               return message.channel.send(view_skill(skill))
             }else{
-               return message.channel.send('Habilidade em CoolDown! '+ cds(skill)) 
+               return message.channel.send('Habilidade em CoolDown! ')
             }
             
          }                   
          
-      }else if(comando=='comoregistrarbot'){
-
       }
    
    }
@@ -246,7 +262,7 @@ if (verificar_comando(comando)==true){
          }      
       })
       if(com.acao=='status'){
-         var status = resposta.split("-")
+         var status = resposta.split("/")
          bot.status.ff= status[0]
          bot.status.def= status[1]
          bot.status.agi= status[2]
@@ -276,7 +292,7 @@ if (verificar_comando(comando)==true){
              skill.dano=[]   
              skill.fraquezas=''
             db.get("skills").push(skill).write()
-            return message.channel.send(`Bot ${bot.nome} teve skill com comando "!${skill.comando}" criado!`) 
+            return message.channel.send(`Bot ${bot.nome} teve skill com comando ":${skill.comando}" criado!`) 
       } 
       if(com.acao==retornar_skill(com.comando,com.acao).comando){
          bot_skill.forEach(s=>{

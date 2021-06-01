@@ -18,19 +18,14 @@
   ],
   "cd": [
     {
-      "user": "839484101937070112",
-      "comando": "chute",
-      "tempo_final": "09:31"
-    },
-    {
       "user": "288430858858266624",
       "comando": "chute",
-      "tempo_final": "10:16"
+      "tempo_final": "12:51"
     }
   ],
   "fichas_bots": [
     {
-      "nome": "Bot F",
+      "nome": "Bot",
       "permissoes": [
         "834960983797399623"
       ],
@@ -67,15 +62,20 @@
       "comando": "chute",
       "nome": "Chute",
       "descricao": "Chute veloz",
-      "cd": "5",
+      "cd": "0",
       "aparencia": "",
       "categoria": "",
       "alcance": "",
       "efeito": "",
       "anula": "NDA",
-      "dano": [],
+      "dano": "FF+RES/RES*2/MEC+FF",
       "efeitos": "NDA",
-      "fraquezas": "NDA"
+      "fraquezas": "NDA",
+      "status": [
+        "FF+RES",
+        "RES*2",
+        "MEC+FF"
+      ]
     }
   ]
 }

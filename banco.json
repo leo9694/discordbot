@@ -52,11 +52,50 @@
       "comando": "ajustarestilo"
     }
   ],
-  "cd": [   
+  "cd": [],
+  "fichas_bots": [
+    {
+      "nome": "",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "859141068800524328"
+      ],
+      "comando": "lived",
+      "rank": "",
+      "aparencia": "",
+      "descricao": "",
+      "quirk": "",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0
+      },
+      "aprovacao": 0
+    }
   ],
-  "fichas_bots": [      
-  ],
-  "skills": [    
+  "skills": [
+    {
+      "bot_comando": "lived",
+      "comando": "faca",
+      "nome": "",
+      "descricao": "",
+      "aparencia": "",
+      "tipo": "item",
+      "quantidade": "2"
+    }
   ],
   "status": []
 }

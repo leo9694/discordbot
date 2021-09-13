@@ -9,7 +9,7 @@ const db = low(adapter)
 const status_comandos=['ff','def','agi','ind','totf','pu','int','anal','totm','cab','caf','cam','cei','test','qtrf','qtrm','nivel','mec']
 const ficha_comandos=['descricao','quirk','personalidade','historia','aparencia']
 const bot_attr=['nome','rank','aparencia','descricao','quirk','nomeheroi','genero','aniversario','idade','altura','peso','explicacaoquirk','personalidade']
-const bot_skill=['comando','nome','descricao','cd','aparencia','categoria','alcance','efeito','anula','fraquezas']
+const bot_skill=['comando','nome','descricao','cd','aparencia','categoria','alcance','efeito','anula','fraquezas','quantidade']
 //est
 client.on("ready", () => {
 console.log('Olá Mundo')
@@ -398,16 +398,29 @@ function view_skill(skill){
    msn+='```'  
    msn+="\n"
    return msn
-} function view_skill_ficha(skill){
-   let msn=''
+}
+function view_item(skill){
+   let msn=''   
    if(skill.aparencia!='') msn+=`${skill.aparencia}\n`
    msn+= '```ini\n'   
-   msn+=(skill.descricao==undefined || skill.descricao=='') ? `***Add a skill de acordo com o modelo de descrição, para isso use o comando*** \n%${skill.bot_comando}-${skill.comando}-descricao\n` : `${skill.descricao}\n`
-   msn+=(skill.cd==undefined || skill.cd=='0'||skill.cd=='' ) ? `***Add o tempo de recarga da habilidade*** \n%${skill.bot_comando}-${skill.comando}-cd\n` : `[CoolDown:] ${skill.cd}\n`
-   msn+=(skill.aparencia==undefined || skill.aparencia=='') ? `***Add uma Imagem para a skill*** \n%${skill.bot_comando}-${skill.comando}-aparencia\n` : ``
+   msn+=(skill.descricao==undefined || skill.descricao=='') ? `***Add o item de acordo com o modelo de descrição, para isso use o comando*** \n%${skill.bot_comando}-${skill.comando}-descricao\n` : `${skill.descricao}\n`
+   msn+=(skill.quantidade==undefined || skill.quantidade=='') ? `***Add a quantidade de item*** \n%${skill.bot_comando}-${skill.comando}-quantidade\n` : `[Quantidade:] ${skill.quantidade}\n`
+   msn+=(skill.aparencia==undefined || skill.aparencia=='') ? `***Add uma Imagem para o item*** \n%${skill.bot_comando}-${skill.comando}-aparencia\n` : ``
    msn+="```\n"
    msn+=''  
-   msn+="\n"
+   msn+="\n"  
+return msn
+}
+function view_skill_ficha(skill){
+   let msn=''   
+      if(skill.aparencia!='') msn+=`${skill.aparencia}\n`
+      msn+= '```ini\n'   
+      msn+=(skill.descricao==undefined || skill.descricao=='') ? `***Add a skill de acordo com o modelo de descrição, para isso use o comando*** \n%${skill.bot_comando}-${skill.comando}-descricao\n` : `${skill.descricao}\n`
+      msn+=(skill.cd==undefined || skill.cd=='0'||skill.cd=='' ) ? `***Add o tempo de recarga da habilidade*** \n%${skill.bot_comando}-${skill.comando}-cd\n` : `[CoolDown:] ${skill.cd}\n`
+      msn+=(skill.aparencia==undefined || skill.aparencia=='') ? `***Add uma Imagem para a skill*** \n%${skill.bot_comando}-${skill.comando}-aparencia\n` : ``
+      msn+="```\n"
+      msn+=''  
+      msn+="\n"  
    return msn
 } 
 function retorna_aparencia(skill){
@@ -1016,7 +1029,20 @@ if (verificar_comando(comando)==true){
             skill=db.get("skills").value()            
             let msn='```'            
             skill.forEach(s=>{              
-               if (s.bot_comando==comando) msn+=`%${comando} ${s.comando}\n`
+               if (s.bot_comando==comando && s.tipo!="item") msn+=`%${comando} ${s.comando}\n`
+            })           
+            msn+='```' 
+            return message.channel.send(msn)
+
+         }else if(resposta=='inventario'){
+            skill=db.get("skills").value()            
+            let msn='```ini\n'  
+            msn+=`꧁[ℑ𝔫𝔳𝔢𝔫𝔱𝔞𝔯𝔦𝔬]꧂
+
+QTD| Item\n`          
+            skill.forEach(s=>{      
+
+               if (s.bot_comando==comando && s.tipo=="item") msn+=`${s.quantidade}  | ${s.comando}\n`
             })           
             msn+='```' 
             return message.channel.send(msn)
@@ -1139,14 +1165,18 @@ if (verificar_comando(comando)==true){
          else if(resposta==retornar_skill(comando, resposta).comando){           
             skill = retornar_skill(comando, resposta) 
 
-            if (cds(skill)==true){
-               if(skill.comando=='soco'||skill.comando=='chute'||skill.comando=='defender'||skill.comando=='desviar'){
-                   return message.channel.send(view_skill(skill))
-               }
-               return message.channel.send(view_skill_ficha(skill))
-           
+            if(skill.tipo=='item'){
+               return message.channel.send(view_item(skill))
             }else{
-               return message.channel.send('Habilidade em CoolDown! ')
+               if (cds(skill)==true){
+                  if(skill.comando=='soco'||skill.comando=='chute'||skill.comando=='defender'||skill.comando=='desviar'){
+                     return message.channel.send(view_skill(skill))
+                  }
+                  return message.channel.send(view_skill_ficha(skill))
+            
+               }else{
+                  return message.channel.send('Habilidade em CoolDown! ')
+               }
             }            
          }                   
          
@@ -1255,7 +1285,18 @@ if (verificar_comando(comando)==true){
              skill.fraquezas=''
             db.get("skills").push(skill).write()
             return message.channel.send(`Bot ${bot.nome} teve skill com comando "%${bot.comando} ${skill.comando}" criado!`) 
-      } 
+      }
+      if(com.acao=='additem'){ 
+         skill = new Object
+            skill.bot_comando=bot.comando
+            skill.comando=resposta           
+             skill.nome=''
+             skill.descricao=''             
+             skill.aparencia=''
+             skill.tipo='item'            
+            db.get("skills").push(skill).write()
+            return message.channel.send(`Bot ${bot.nome} teve item com comando "%${bot.comando} ${skill.comando}" criado!`) 
+      }  
       if(retornar_skill(com.comando,com.acao)!=undefined){     
          if(com.acao==retornar_skill(com.comando,com.acao).comando){
             bot_skill.forEach(s=>{

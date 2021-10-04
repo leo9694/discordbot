@@ -132,6 +132,12 @@ function bot(comando){
    }
 
 }
+function ficha(comando){
+   bot = db.get("fichas_bots").find({comando: comando}).value()
+   if(bot!=undefined){
+      return bot
+   }
+}
 function retornar_skill(bot, skill){
    skills=db.get("skills").find({bot_comando: bot,comando: skill}).value() 
    if(skills!=undefined){      
@@ -203,7 +209,32 @@ function cds(skill){
       return true 
    }
 
-}function retorna_hp(hp_minimo,hp_maximo){   
+}
+function cd_skill(skill){
+   cd = db.get("cd").find({comando: skill.comando,bot_comando:skill.bot_comando}).value()
+   if (cd==undefined){
+      return true   
+   }else{
+      if (parseInt(cd.cd)<0){
+         db.get("cd").remove({comando: skill.comando,bot_comando:skill.bot_comando}).write()
+         return true
+      }
+      return false
+   }
+
+
+}
+function add_cd_skill(skill){
+   cd=new Object
+   cd.cd=skill.cd
+   cd.comando=skill.comando
+   cd.bot_comando=skill.bot_comando
+   cd.tipo='turno'
+   db.get("cd").push(cd).write() 
+}
+
+
+function retorna_hp(hp_minimo,hp_maximo){   
    let randon = parseInt(Math.random() * (hp_maximo - hp_minimo) + hp_minimo)   
     return randon
 }
@@ -753,7 +784,227 @@ function descansar(bot){
       }   
    
 }
+function verificar_id(id){
+   combate=db.get("combate").find({id: id}).value()
+   if(combate==undefined){      
+      return id
+   }else{      
+      return verificar_id(id+1)
+   }
+}
+function verificar_lutadores(lutadores){
+   let a 
+   lutadores.forEach(lutador=>{
+      if(db.get("fichas_bots").find({comando: lutador}).value()==undefined) a=false
+   })
+   if(a==false) return false
+}
+function verificar_luta(comando){
+   let res=false
+   combates=db.get("combate").value()
+   combates.forEach(combate =>{    
+      combate.lutadores.forEach(lutador=>{
+         console.log(lutador)
+         if(lutador=comando) res=true
+      })  
+   })
+   return res
+}
+function view_turno(luta){
+   let msn='⊹˚₊⎯⎯⎯⊰ㄒㄩ尺刀ㄖ丂⊱⎯⎯⎯₊˚⊹' 
+   msn+='```diff\n'
+   msn+=`⩺ Fim do turno ${luta.turno} ⩹\n\n`
+   luta.lutadores.forEach(lutador=>{
+      bot=db.get("fichas_bots").find({comando: lutador}).value() 
+      msn+=`⇰ ${bot.comando} HP ${calcular_hp(bot)}\n`
+      msn+=view_efeitos(bot.comando)
+      console.log(lutador)
+      calculo_cd(lutador)
+      console.log(bot.comando)
+   })
+   msn+='```'
+   db.get("combate").find({id: luta.id}).assign({turno: luta.turno+1}).write()
+   return msn
+}
+function calculo_cd(comando){
+   cds=db.get("cd").value()
+   cds.forEach(cd =>{
+      if(cd.bot_comando==comando){
+         console.log(cd)
+         cd.cd=parseInt(cd.cd)-1
+         db.get("cd").find({bot_comando: cd.bot_comando,comando: cd.comando}).assign(cd).write() 
+      }
+   })
+}
 
+function remover_efeitos(lutadores){
+   lutadores.forEach(lutador=>{      
+      db.get("efeitos").remove({comando: lutador}).write()
+      db.get("cd").remove({bot_comando: lutador}).write()
+
+   })
+}
+function view_efeitos(comando){
+   let msn=''
+   
+   efeitos=db.get("efeitos").value()  
+   if(efeitos!=undefined){
+      efeitos.forEach(efeito=>{ 
+         if(efeito.comando==comando){     
+            if(efeito.turno!=0)msn+=`-   ${efeito.nome} ${efeito.nivel} ${efeito.descricao} (turnos restantes ${efeito.turno})\n` 
+            if(efeito.turno==0){
+               db.get("efeitos").remove({comando: comando,nome:efeito.nome}).write()
+            }
+            efeito.turno=efeito.turno-1 
+            db.get("efeitos").find({comando: comando,nome:efeito.nome}).assign(efeito).write() 
+         }
+      })
+     
+      return msn
+   }
+   return msn
+}
+
+function freezing(comando,nivel){
+   ef=db.get("efeitos").find({comando: comando,nome:'Freezing'}).value()
+   if(ef!=undefined){
+      ef.nivel=nivel+ef.nivel
+      if(ef.nivel==2){
+         ef.turno=3
+         ef.descricao='-10% da agilidade por 3 turnos'
+         ef.nivel=2
+      }
+      else if(ef.nivel==3){
+         ef.turno=2
+         ef.descricao='-20% da agildiade por 2 turnos'
+         ef.nivel=3
+      }
+      else if(ef.nivel>=4){
+         ef.turno=1
+         ef.descricao='Perde um turno de ataque, sofre 5% do HP máximo em dano'
+         ef.nivel=4
+      }   
+      db.get("efeitos").find({comando: comando,nome:'Freezing'}).assign(ef).write()
+   }else{      
+      efeitos = new Object
+      efeitos.comando=comando
+      efeitos.nome='Freezing'   
+      efeitos.efeito=''
+      if(nivel==1){
+         efeitos.turno=5
+         efeitos.descricao='-5% da agilidade por 5 turnos'
+      }
+      else if(nivel==2){
+         efeitos.turno=3
+         efeitos.descricao='-10% da agilidade por 3 turnos'
+      } 
+      else if(nivel==3){
+         efeitos.turno=2
+         efeitos.descricao='-20% da agildiade por 2 turnos'
+      }  
+      else if(nivel==4){
+         efeitos.turno=1
+         efeitos.descricao='Perde um turno de ataque, sofre 5% do HP máximo em dano'
+      }       
+      efeitos.nivel=nivel
+      db.get("efeitos").push(efeitos).write() 
+   } 
+}
+function burning(comando,nivel){
+   ef=db.get("efeitos").find({comando: comando,nome:'Burning'}).value()
+   if(ef!=undefined){
+      ef.nivel=nivel+ef.nivel
+      if(ef.nivel==2){
+         ef.turno=3
+         ef.descricao='-10% da defesa por 3 turnos'
+         ef.nivel=2
+      }
+      else if(ef.nivel>=3){
+         ef.turno=3
+         ef.descricao='-15% da defesa por 3 turnos'
+         ef.nivel=3
+      }           
+      db.get("efeitos").find({comando: comando,nome:'Burning'}).assign(ef).write()
+   }else{      
+      efeitos = new Object
+      efeitos.comando=comando
+      efeitos.nome='Burning'   
+      efeitos.efeito=''
+      if(nivel==1){
+         efeitos.turno=3
+         efeitos.descricao='-5% da defesa por 3 turnos'
+      }
+      else if(nivel==2){
+         efeitos.turno=3
+         efeitos.descricao='-10% da defesa por 3 turnos'
+      } 
+      else if(nivel>=3){
+         nivel=3
+         efeitos.turno=3
+         efeitos.descricao='-15% da defesa por 3 turnos'
+      }            
+      efeitos.nivel=nivel
+      db.get("efeitos").push(efeitos).write() 
+   }
+}
+function bleeding(comando,nivel){
+   ef=db.get("efeitos").find({comando: comando,nome:'Bleeding'}).value()
+   efeitos = new Object
+   efeitos.comando=comando
+   efeitos.nome='Bleeding'   
+   efeitos.efeito=''
+   if(nivel==1){
+      efeitos.turno=5
+      efeitos.descricao='-1% do HP do alvo por 5 turnos'
+   }
+   else if(nivel==2){
+      efeitos.turno=5
+      efeitos.descricao='-2% do HP do alvo por 5 turnos'
+   } 
+   else if(nivel==3){
+      efeitos.turno=5
+      efeitos.descricao='-4% do HP do alvo por 5 turnos'
+   }            
+   efeitos.nivel=nivel
+   db.get("efeitos").push(efeitos).write() 
+}
+function poison(comando,nivel){
+   ef=db.get("efeitos").find({comando: comando,nome:'Poison'}).value()
+   if(ef!=undefined){
+      ef.nivel=nivel+ef.nivel
+      if(ef.nivel==2){
+         ef.turno=5
+         ef.descricao='-3% de dano com base na vida máxima do alvo por 5 turnos'
+         ef.nivel=2
+      }
+      else if(ef.nivel>=3){
+         ef.turno=5
+         ef.descricao='-5% de dano com base na vida máxima do alvo por 5 turnos'
+         ef.nivel=3
+      }           
+      db.get("efeitos").find({comando: comando,nome:'Poison'}).assign(ef).write()
+   }else{      
+      efeitos = new Object
+      efeitos.comando=comando
+      efeitos.nome='Poison'   
+      efeitos.efeito=''
+      if(nivel==1){
+         efeitos.turno=5
+         efeitos.descricao='-2% de dano com base na vida máxima do alvo por 5 turnos'
+      }
+      else if(nivel==2){
+         efeitos.turno=5
+         efeitos.descricao='-3% de dano com base na vida máxima do alvo por 5 turnos'
+      } 
+      else if(nivel>=3){
+         nivel=3
+         efeitos.turno=5
+         efeitos.descricao='-5% de dano com base na vida máxima do alvo por 5 turnos'
+      }            
+      efeitos.nivel=nivel
+      db.get("efeitos").push(efeitos).write() 
+   }
+}
 try{
 if (verificar_comando(comando)==true){  
    if (verificar_comando_composto(comando)==false){       
@@ -969,18 +1220,70 @@ if (verificar_comando(comando)==true){
          db.get("skills").remove({bot_comando: resposta}).write()
          db.get("cd").remove({bot_comando: resposta}).write()
          return message.channel.send(`Bot com comando "%${resposta}" deletado!`)
+      }else if(comando=='lutar'){                 
+         if(!args[0])return message.channel.send('Vc esqueceu de colocar o comando do seu bot!')
+         lutadores=resposta.replace(/ /g, '').split(',')
+         if(verificar_lutadores(lutadores)==false) return message.channel.send('Um lutador não cadastrado!')
+         luta = new Object
+         luta.id= verificar_id(1)
+         luta.lutadores=lutadores
+         luta.turno=1
+         db.get("combate").push(luta).write()  
+         return message.channel.send(`luta ${luta.id} iniciada`)
+      }else if(comando=='fimluta'){                 
+         if(!args[0])return message.channel.send('Vc esqueceu de colocar o numero da Luta')  
+         luta=db.get("combate").find({id: parseInt(parseInt(resposta))}).value()  
+         if(luta==undefined)return message.channel.send('Luta não encontrada!')
+         msn=view_turno(luta)
+         msn+='```\n Fim da luta```'
+         db.get("combate").remove({id: luta.id}).write()
+         remover_efeitos(luta.lutadores)
+         return message.channel.send(`${msn}`)
+      }else if(comando=='turno'){                 
+         if(!args[0])return message.channel.send('Vc esqueceu de colocar o comando do seu bot!')
+         luta_id=resposta.replace(/luta /g, '')
+         luta=db.get("combate").find({id: parseInt(luta_id)}).value()  
+         if(luta==undefined)return message.channel.send('Luta não encontrada!')
+         msn=view_turno(luta)
+                  
+         return message.channel.send(msn, {
+            files: [
+                `https://cdn.discordapp.com/attachments/732337957876269098/886994476051099678/Tumblr_l_97519418797133.gif`
+            ]
+        });
+
+
       }else if(comando=='comandos'){
-         let msn='``'
-         valor =  db.get("comandos").value()      
-         valor.forEach(v=>{
-            msn+=`%${v.comando}\n`
-         })
-         msn+='``'
+         let msn='```fix\n'
+         msn+=`๑‿︵‿୨ ℭ𝔬𝔪𝔞𝔫𝔡𝔬𝔰 ୧‿︵‿๑
+↬ Comandos de Fichas`
+msn+=`
+   %comocadastrarficha
+   %cadastrarficha
+   %listarfichas
+   %statusfichas
+   %deletarbot\n`
+msn+=`↬ Comandos de NPCs
+   %cadastrarnpc
+   %listarnpcs
+   %deletarbot\n`
+msn+=`↬ Comandos de Robos
+   %comoregistrarbot
+   %cadastrarbot
+   %listarbots
+   %deletarbot\n`
+msn+=`↬ Comandos de Zoeira
+   %xingamento
+   %calcinha
+   %x1lixo`
+         msn+='```'
+         
          return message.channel.send(msn)
 
       }else if(comando==bot(comando).comando){
          //View bot
-         bot=db.get("fichas_bots").find({comando: comando}).value()     
+         bot=db.get("fichas_bots").find({comando: comando}).value()  
+         res_efeito=resposta.split(' ')   
          if (verificar_permissao(bot.permissoes)==0) return message.channel.send('Permissao negada')    
          if(!args[0]){ 
             if(bot.funcao=='robo'){                           
@@ -1092,57 +1395,7 @@ QTD| Item\n`
             }            
             return message.channel.send('Comando de HP invalido')                 
 
-         }
-         // else if(resposta.indexOf("*") !== -1 && resposta.indexOf("%") == -1){  
-         //    let dano
-         //    let msn='```ini\n' 
-         //    var atr = resposta.split("*") 
-         //    if(resposta.indexOf("+") !== -1){
-         //       sts=atr[0].split("+")
-         //       dano=parseInt(bot.status[`${sts[0]}`])+parseInt(bot.status[`${sts[1]}`])               
-         //    }else{            
-         //       dano= parseInt(bot.status[`${atr[0]}`])
-         //    }
-         //    msn+=`Dano/Defesa [${dano*parseInt(atr[1])}]`
-         //    msn+='```' 
-         //    return message.channel.send(msn)
-         // }
-         //else if(resposta.indexOf("%") !== -1){  
-         //    let msn='```ini\n' 
-         //    if(resposta.indexOf("+") !== -1) var co = resposta.split("+")
-         //    if(resposta.indexOf("-") !== -1) var co = resposta.split("-")
-         //    console.log(co)             
-         //    let buff=[]
-         //    let m=[1,1]
-         //    let dano=0
-         //    let da=0
-         //    co.forEach(myFunction)
-         //    function myFunction(atr, index) {
-                                                 
-         //          if (co[index].indexOf("%") !== -1){
-         //          buff=atr.split("%")
-         //          if (buff[1].indexOf("*") !== -1){
-         //              m=buff[1].split('*')
-         //              buff[1]=m[0]
-         //          } 
-         //             dano=parseInt(dano+(parseInt(bot.status[`${buff[1].replace(/ /g, "")}`])*(parseInt(buff[0])/100)))     
-         //          }
-         //          if(Number.isNaN(parseInt(co[0]))){
-         //             co[0]=parseInt(bot.status[`${co[0]}`])
-         //             if (co[1].indexOf("%") == -1) co[0]=co[0]+parseInt(bot.status[`${co[1]}`])
-         //             console.log(co[0])
-         //          }
-                            
-         //    } 
-            
-         //    if(resposta.indexOf("-") !== -1)dano=parseInt(co[0])-(dano*m[1])
-         //    if(resposta.indexOf("+") !== -1)dano=parseInt(co[0])+(dano*m[1])
-                
-         //    msn+=`Dano/Defesa [${parseInt(dano)}]`
-         //    msn+='```' 
-         //    return message.channel.send(msn)
-
-         // }
+         }        
          else if(resposta.indexOf("+") !== -1 || resposta.indexOf("*") !== -1||resposta.indexOf("%") !== -1||resposta.indexOf("/") !== -1){         
             calculo=calculo_string(resposta,bot)
             let msn='```ini\n'
@@ -1162,23 +1415,69 @@ QTD| Item\n`
          }else if(resposta=='arrumardescansar'){                              
             return message.channel.send(descansar(bot))
          }
+         else if(res_efeito[0].indexOf("freezing-") !== -1 || res_efeito[0]=='freezing'){
+            alvo=ficha(res_efeito[1]) 
+            let nivel=1 
+            if (res_efeito[0].indexOf("-") !== -1) nivel=parseInt(res_efeito[0].split('-')[1])
+            if(alvo==undefined) return message.channel.send(`${res_efeito[1]} não cadastrado!`) 
+            freezing(alvo.comando,nivel)
+            let msn='```ini\n'
+            msn+=`${comando} aplicou [Freezing] em ${res_efeito[1]}`
+            msn+='```'
+            return message.channel.send(msn)             
+                       
+         } 
+         else if(res_efeito[0].indexOf("burning-") !== -1 || res_efeito[0]=='burning'){
+            alvo=ficha(res_efeito[1])
+            let nivel=1
+            if (res_efeito[0].indexOf("-") !== -1) nivel=parseInt(res_efeito[0].split('-')[1])
+            if(alvo==undefined) return message.channel.send(`${res_efeito[1]} não cadastrado!`)             
+            burning(alvo.comando,nivel)
+            let msn='```ini\n'
+            msn+=`${comando} aplicou [Burning] em ${res_efeito[1]}`
+            msn+='```'
+            return message.channel.send(msn)             
+                       
+         }
+         else if(res_efeito[0].indexOf("bleeding-") !== -1 || res_efeito[0]=='bleeding'){
+            alvo=ficha(res_efeito[1])
+            let nivel=1
+            if (res_efeito[0].indexOf("-") !== -1) nivel=parseInt(res_efeito[0].split('-')[1])
+            if(alvo==undefined) return message.channel.send(`${res_efeito[1]} não cadastrado!`)             
+            bleeding(alvo.comando,nivel)
+            let msn='```ini\n'
+            msn+=`${comando} aplicou [Bleeding] em ${res_efeito[1]}`
+            msn+='```'
+            return message.channel.send(msn)             
+                       
+         } 
+         else if(res_efeito[0].indexOf("poison-") !== -1 || res_efeito[0]=='poison'){
+            alvo=ficha(res_efeito[1])
+            let nivel=1
+            if (res_efeito[0].indexOf("-") !== -1) nivel=parseInt(res_efeito[0].split('-')[1])
+            if(alvo==undefined) return message.channel.send(`${res_efeito[1]} não cadastrado!`)             
+            poison(alvo.comando,nivel)
+            let msn='```ini\n'
+            msn+=`${comando} aplicou [Poison] em ${res_efeito[1]}`
+            msn+='```'
+            return message.channel.send(msn)             
+                       
+         }    
          else if(resposta==retornar_skill(comando, resposta).comando){           
-            skill = retornar_skill(comando, resposta) 
-
+            skill = retornar_skill(comando, resposta)            
             if(skill.tipo=='item'){
                return message.channel.send(view_item(skill))
             }else{
-               if (cds(skill)==true){
-                  if(skill.comando=='soco'||skill.comando=='chute'||skill.comando=='defender'||skill.comando=='desviar'){
-                     return message.channel.send(view_skill(skill))
-                  }
-                  return message.channel.send(view_skill_ficha(skill))
-            
+               if (cd_skill(skill)==true){
+                  console.log(verificar_luta(comando))
+                  if(verificar_luta(comando)==true) add_cd_skill(skill)                  
+                  return message.channel.send(view_skill_ficha(skill))            
                }else{
                   return message.channel.send('Habilidade em CoolDown! ')
                }
             }            
-         }                   
+         }   
+                      
          
       }
       return 0
@@ -1329,7 +1628,7 @@ QTD| Item\n`
    return message.channel.send(m)
 }
 }catch(error){
-   // console.log(error)
+   console.log(error)
    console.log('Algum erro')
 }
 

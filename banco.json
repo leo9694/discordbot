@@ -50,6 +50,15 @@
     },
     {
       "comando": "ajustarestilo"
+    },
+    {
+      "comando": "lutar"
+    },
+    {
+      "comando": "turno"
+    },
+    {
+      "comando": "fimluta"
     }
   ],
   "cd": [],
@@ -81,9 +90,79 @@
         "cab": 0,
         "caf": 0,
         "cam": 0,
-        "cei": 0
+        "cei": 0,
+        "nivel": "1",
+        "aprovacao": 0,
+        "hp_atual": 650
       },
       "aprovacao": 0
+    },
+    {
+      "nome": "Shoyu Shimada",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "859141068800524328"
+      ],
+      "comando": "shoyu",
+      "rank": "",
+      "aparencia": "",
+      "descricao": "",
+      "quirk": "",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "nivel": "1",
+        "aprovacao": 0,
+        "hp_atual": 900
+      },
+      "aprovacao": 0
+    },
+    {
+      "nome": "",
+      "funcao": "npc",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "834960983797399623",
+        "853736404567719958"
+      ],
+      "comando": "zed",
+      "rank": "",
+      "aparencia": "",
+      "descricao": "",
+      "quirk": "",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "nivel": "1",
+        "aprovacao": 0
+      }
     }
   ],
   "skills": [
@@ -95,7 +174,22 @@
       "aparencia": "",
       "tipo": "item",
       "quantidade": "2"
+    },
+    {
+      "bot_comando": "lived",
+      "comando": "sombra",
+      "nome": "",
+      "descricao": "",
+      "cd": "2",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
     }
   ],
-  "status": []
+  "combate": [],
+  "efeitos": []
 }

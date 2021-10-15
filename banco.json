@@ -93,7 +93,8 @@
         "cei": 0,
         "nivel": "1",
         "aprovacao": 0,
-        "hp_atual": 650
+        "hp_atual": 1000,
+        "descansando": 1
       },
       "aprovacao": 0
     },
@@ -113,7 +114,7 @@
       "hp_minimo": 0,
       "hp_maximo": 0,
       "status": {
-        "def": 0,
+        "def": "500",
         "ff": 0,
         "agi": 0,
         "mec": 0,
@@ -127,9 +128,11 @@
         "cei": 0,
         "nivel": "1",
         "aprovacao": 0,
-        "hp_atual": 900
+        "hp_atual": 675,
+        "descansando": 1
       },
-      "aprovacao": 0
+      "aprovacao": 0,
+      "genero": "Alpha"
     },
     {
       "nome": "",
@@ -190,6 +193,24 @@
       "fraquezas": ""
     }
   ],
-  "combate": [],
-  "efeitos": []
+  "combate": [
+    {
+      "id": 1,
+      "lutadores": [
+        "shoyu",
+        "lived"
+      ],
+      "turno": 10
+    }
+  ],
+  "efeitos": [
+    {
+      "comando": "shoyu",
+      "nome": "Freezing",
+      "efeito": "",
+      "turno": 2,
+      "descricao": "-10% da agilidade por 3 turnos",
+      "nivel": 2
+    }
+  ]
 }

@@ -83,7 +83,7 @@ function verificar_permissao(cargos_comando){
        bot.status.cab=0
        bot.status.caf=0
        bot.status.cam=0
-       bot.status.cei=0  
+       bot.status.cei=0     
    if(funcao=='ficha') bot.aprovacao=0
    return bot
 }
@@ -1005,6 +1005,22 @@ function poison(comando,nivel){
       db.get("efeitos").push(efeitos).write() 
    }
 }
+function order_array(array,attr){
+   array.sort(function (a, b) {
+      if (a[`${attr}`] < b[`${attr}`]) {
+        return 1;
+      }
+      if (a[`${attr}`] > b[`${attr}`]) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+    return array
+}
+function capitalize(string) {
+   return string[0].toUpperCase() + string.slice(1);
+}
 try{
 if (verificar_comando(comando)==true){  
    if (verificar_comando_composto(comando)==false){       
@@ -1058,7 +1074,11 @@ if (verificar_comando(comando)==true){
          // addChuteFicha(res[0])
          // addDefesaFicha(res[0])
          // addEsquivaFicha(res[0])
+         banco = new Object
+         banco.comando=res[0]
+         banco.saldo=0
          db.get("fichas_bots").push(registrar('ficha', res[0],res[1])).write()            
+         db.get("conta_bancaria").push(banco).write()            
 
          let msn=''
          msn+=`NPC com o comando "***%${res[0]}***" criado!\n`
@@ -1112,6 +1132,16 @@ if (verificar_comando(comando)==true){
          })
          msn+='```'
          return message.channel.send(msn)
+      }else if(comando=='financeiro'){   
+         conta_bancarias=db.get("conta_bancaria").value()
+         conta_bancarias=order_array(conta_bancarias,'saldo')         
+         let msn='```'            
+         conta_bancarias.forEach(conta_bancaria=>{              
+            msn+=`${capitalize(conta_bancaria.comando)} - ${conta_bancaria.saldo}\n`
+         })           
+         msn+='```' 
+         return message.channel.send(msn)
+
       }
       else if(comando=='ajustarskills'){
          let msn=''   
@@ -1320,6 +1350,21 @@ msn+=`↬ Comandos de Zoeira
             db.get("fichas_bots").find({comando: comando}).assign(bot).write()
             return message.channel.send(`Bot ${bot.nome} status Aprovado`)
 
+         }else if(resposta=='saldo'){   
+            conta_bancaria=db.get("conta_bancaria").find({comando: comando}).value()  
+            return message.channel.send(`Saldo bancario: ${conta_bancaria.saldo}`)
+
+         }else if(resposta.indexOf("transferir") !== -1){                      
+            res=resposta.split(' ')
+            p1=db.get("conta_bancaria").find({comando: comando}).value() 
+            p2=db.get("conta_bancaria").find({comando: res[1]}).value()
+            if(p1==undefined || p2==undefined) return message.channel.send('```Conta bancaria inexistente!```')   
+            saldo1=p1.saldo-parseInt(res[2])
+            if(saldo1<0)return message.channel.send('```Saldo Insuficiente!```')
+            saldo2=p2.saldo+parseInt(res[2])
+            db.get("conta_bancaria").find({comando: p1.comando}).assign({saldo: saldo1}).write()
+            db.get("conta_bancaria").find({comando: p2.comando}).assign({saldo: saldo2}).write()
+           return message.channel.send('```Transferencia realizada!```')
          }else if(resposta=='ff' || resposta=='agi' || resposta=='ind' || resposta=='def'|| resposta=='int'|| 
          resposta=='anal'|| resposta=='nivel'|| resposta=='pu' ){                  
             let msn='```ini\n'            

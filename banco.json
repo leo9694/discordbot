@@ -59,6 +59,9 @@
     },
     {
       "comando": "fimluta"
+    },
+    {
+      "comando": "financeiro"
     }
   ],
   "cd": [],
@@ -166,6 +169,15 @@
         "nivel": "1",
         "aprovacao": 0
       }
+    },
+    {
+      "comando": "banco",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "834960983797399623",
+        "853736404567719958"
+      ]
     }
   ],
   "skills": [
@@ -211,6 +223,20 @@
       "turno": 2,
       "descricao": "-10% da agilidade por 3 turnos",
       "nivel": 2
+    }
+  ],
+  "conta_bancaria": [
+    {
+      "comando": "banco",
+      "saldo": 5000000
+    },
+    {
+      "comando": "lived",
+      "saldo": 0
+    },
+    {
+      "comando": "shoyu",
+      "saldo": 0
     }
   ]
 }

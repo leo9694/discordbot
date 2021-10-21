@@ -158,7 +158,8 @@ function retorna_hp(hp_minimo,hp_maximo){
     return randon
 }
 function retorna_randon(n){
-   let randon = parseInt(Math.random() * (n - 0) + 0)   
+   n=n+1
+   let randon = parseInt(Math.random() * (n - 1) + 1)   
     return randon
 
 }
@@ -851,12 +852,12 @@ function view_efeitos(comando){
    if(efeitos!=undefined){
       efeitos.forEach(efeito=>{ 
          if(efeito.comando==comando){     
-            if(efeito.turno!=0)msn+=`-   ${efeito.nome} ${efeito.nivel} ${efeito.descricao} (turnos restantes ${efeito.turno})\n` 
-            if(efeito.turno==0){
-               db.get("efeitos").remove({comando: comando,nome:efeito.nome}).write()
+            if(efeito.turno>0)msn+=`-   ${efeito.nome} ${efeito.nivel} ${efeito.descricao} (turnos restantes ${efeito.turno})\n` 
+            if(efeito.turno<=1){
+               db.get("efeitos").remove({comando: comando,nome:efeito.nome,turno:efeito.turno}).write()
             }
             efeito.turno=efeito.turno-1 
-            db.get("efeitos").find({comando: comando,nome:efeito.nome}).assign(efeito).write() 
+            db.get("efeitos").find({comando: comando,nome:efeito.nome,turno:efeito.turno}).assign(efeito).write() 
          }
       })
      
@@ -1005,6 +1006,18 @@ function poison(comando,nivel){
       db.get("efeitos").push(efeitos).write() 
    }
 }
+function trap(comando,nivel){
+   ef=db.get("efeitos").find({comando: comando,nome:'Trap'}).value()
+   efeitos = new Object
+   efeitos.comando=comando
+   efeitos.nome='Trap'   
+   efeitos.efeito=''   
+   efeitos.turno=1
+   efeitos.descricao='Sobre efeito da trap por 1 turno'
+                
+   efeitos.nivel=nivel
+   db.get("efeitos").push(efeitos).write() 
+}
 function order_array(array,attr){
    array.sort(function (a, b) {
       if (a[`${attr}`] < b[`${attr}`]) {
@@ -1134,10 +1147,11 @@ if (verificar_comando(comando)==true){
          return message.channel.send(msn)
       }else if(comando=='financeiro'){   
          conta_bancarias=db.get("conta_bancaria").value()
-         conta_bancarias=order_array(conta_bancarias,'saldo')         
-         let msn='```'            
+         conta_bancarias=order_array(conta_bancarias,'saldo')                
+         let msn='```css\n'  
+         msn+='💹 ʀᴀɴᴋ ᴍᴏɴᴇᴛᴀʀɪᴏ 💲\n\n'          
          conta_bancarias.forEach(conta_bancaria=>{              
-            msn+=`${capitalize(conta_bancaria.comando)} - ${conta_bancaria.saldo}\n`
+            msn+=`${capitalize(conta_bancaria.comando)} - ${conta_bancaria.saldo.toLocaleString('pt-br', {minimumFractionDigits: 0})} ¥ \n`
          })           
          msn+='```' 
          return message.channel.send(msn)
@@ -1352,9 +1366,13 @@ msn+=`↬ Comandos de Zoeira
 
          }else if(resposta=='saldo'){   
             conta_bancaria=db.get("conta_bancaria").find({comando: comando}).value()  
-            return message.channel.send(`Saldo bancario: ${conta_bancaria.saldo}`)
+            let msn='```css\n'  
+            msn+='💹 Saldo Bancario💲\n\n' 
+            msn+=`Valor: ${conta_bancaria.saldo.toLocaleString('pt-br', {minimumFractionDigits: 0})} ¥`
+            msn+='```'
+            return message.channel.send(msn)
 
-         }else if(resposta.indexOf("transferir") !== -1){                      
+         }else if(resposta.indexOf("dep") !== -1){                      
             res=resposta.split(' ')
             p1=db.get("conta_bancaria").find({comando: comando}).value() 
             p2=db.get("conta_bancaria").find({comando: res[1]}).value()
@@ -1507,7 +1525,46 @@ QTD| Item\n`
             msn+='```'
             return message.channel.send(msn)             
                        
-         }    
+         } 
+         else if(res_efeito[0].indexOf("trap-") !== -1 || res_efeito[0]=='trap'){
+            alvo=ficha(res_efeito[1])
+            let nivel=capitalize('e')
+            if (res_efeito[0].indexOf("-") !== -1) nivel=capitalize(res_efeito[0].split('-')[1])
+            if(alvo==undefined) return message.channel.send(`${res_efeito[1]} não cadastrado!`)
+            let msn='```ini\n'
+
+            random=retorna_randon(100)
+            console.log(random)
+            if(nivel=='E' && random<20){
+               trap(alvo.comando,nivel)
+               msn+=`${comando} aplicou [Trap] em ${res_efeito[1]}`
+            }else if(nivel=='D' && random<35){
+               trap(alvo.comando,nivel)
+               msn+=`${comando} aplicou [Trap] em ${res_efeito[1]}`
+            }else if(nivel=='C' && random<50){
+               trap(alvo.comando,nivel)
+               msn+=`${comando} aplicou [Trap] em ${res_efeito[1]}`
+            }else if(nivel=='B' && random<65){
+               trap(alvo.comando,nivel)
+               msn+=`${comando} aplicou [Trap] em ${res_efeito[1]}`
+            }else if(nivel=='A' && random<80){
+               trap(alvo.comando,nivel)
+               msn+=`${comando} aplicou [Trap] em ${res_efeito[1]}`
+            }
+            else if(nivel=='S' && random<95){
+               trap(alvo.comando,nivel)
+               msn+=`${comando} aplicou [Trap] em ${res_efeito[1]}`
+            }
+            else{
+               msn+=`${res_efeito[1]} não caiu na trap!`
+            }   
+            
+            
+            
+            msn+='```'
+            return message.channel.send(msn)             
+                       
+         }     
          else if(resposta==retornar_skill(comando, resposta).comando){           
             skill = retornar_skill(comando, resposta)            
             if(skill.tipo=='item'){

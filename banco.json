@@ -212,31 +212,22 @@
         "shoyu",
         "lived"
       ],
-      "turno": 10
+      "turno": 77
     }
   ],
-  "efeitos": [
-    {
-      "comando": "shoyu",
-      "nome": "Freezing",
-      "efeito": "",
-      "turno": 2,
-      "descricao": "-10% da agilidade por 3 turnos",
-      "nivel": 2
-    }
-  ],
+  "efeitos": [],
   "conta_bancaria": [
     {
       "comando": "banco",
-      "saldo": 5000000
+      "saldo": 4985000
     },
     {
       "comando": "lived",
-      "saldo": 0
+      "saldo": 5000
     },
     {
       "comando": "shoyu",
-      "saldo": 0
+      "saldo": 10000
     }
   ]
 }

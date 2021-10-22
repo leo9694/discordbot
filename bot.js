@@ -83,7 +83,8 @@ function verificar_permissao(cargos_comando){
        bot.status.cab=0
        bot.status.caf=0
        bot.status.cam=0
-       bot.status.cei=0     
+       bot.status.cei=0
+       bot.status.popularidade= 5.5   
    if(funcao=='ficha') bot.aprovacao=0
    return bot
 }
@@ -1034,6 +1035,20 @@ function order_array(array,attr){
 function capitalize(string) {
    return string[0].toUpperCase() + string.slice(1);
 }
+function barra_prog(popularidade){   
+   let i=0,msn='★ '
+   while (i<10){
+      if(i<popularidade){
+         msn+=`▣`
+      }else{
+         msn+=`□`
+      } 
+      i=i+0.5     
+   }
+   
+   msn+=` ★`   
+   return msn
+}
 try{
 if (verificar_comando(comando)==true){  
    if (verificar_comando_composto(comando)==false){       
@@ -1209,6 +1224,21 @@ if (verificar_comando(comando)==true){
          msn+='```\n'
          return message.channel.send(msn)
       }
+      else if(comando=='popularidade'){
+         let msn=''   
+         msn+= '```ini\n'
+         valor =  db.get("fichas_bots").value().sort() 
+         valor=order_array(valor,'popularidade')             
+         msn+='     Rank de Popularidade  \n'       
+         valor.forEach(v=>{
+            if(v.funcao=='ficha'){ 
+               msn+=`${barra_prog(v.popularidade)} ${capitalize(v.comando)} - ${v.popularidade}\n` 
+
+            }         
+         })
+         msn+='```\n'
+         return message.channel.send(msn)
+      }
       else if(comando=='descansados'){
          let msn=''   
          msn+= '```ini\n'
@@ -1369,6 +1399,14 @@ msn+=`↬ Comandos de Zoeira
             let msn='```css\n'  
             msn+='💹 Saldo Bancario💲\n\n' 
             msn+=`Valor: ${conta_bancaria.saldo.toLocaleString('pt-br', {minimumFractionDigits: 0})} ¥`
+            msn+='```'
+            return message.channel.send(msn)
+
+         }else if(resposta=='popularidade'){   
+            bot=db.get("fichas_bots").find({comando: comando}).value()  
+            let msn='```\n'  
+            msn+='Popularidade \n\n' 
+            msn+=`${barra_prog(bot.popularidade)} ${capitalize(bot.comando)} - ${bot.popularidade}\n`
             msn+='```'
             return message.channel.send(msn)
 
@@ -1614,7 +1652,12 @@ QTD| Item\n`
          bot.permissoes.push(resposta)
          db.get("fichas_bots").find({comando: com.comando}).assign(bot).write()
          return message.channel.send(`Bot ${bot.nome} teve permissão adicionada!`)
-      }else if(com.acao=='status'){
+      }if(com.acao=='popularidade'){ 
+         bot.popularidade=parseFloat(resposta.replace(/,/g, "."))        
+         db.get("fichas_bots").find({comando: com.comando}).assign(bot).write()
+         return message.channel.send(`Bot ${bot.nome} teve popularidade adicionada!`)
+      }
+      else if(com.acao=='status'){
          var status = resposta.split("/")
          if(bot.funcao=='robo'){
             bot.status.ff= status[0]

@@ -62,6 +62,9 @@
     },
     {
       "comando": "financeiro"
+    },
+    {
+      "comando": "popularidade"
     }
   ],
   "cd": [],
@@ -95,11 +98,13 @@
         "cam": 0,
         "cei": 0,
         "nivel": "1",
+        "popularidade": 5.5,
         "aprovacao": 0,
         "hp_atual": 1000,
         "descansando": 1
       },
-      "aprovacao": 0
+      "aprovacao": 0,
+      "popularidade": 5.5
     },
     {
       "nome": "Shoyu Shimada",
@@ -135,7 +140,8 @@
         "descansando": 1
       },
       "aprovacao": 0,
-      "genero": "Alpha"
+      "genero": "Alpha",
+      "popularidade": 8.5
     },
     {
       "nome": "",

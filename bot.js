@@ -10,6 +10,7 @@ const status_comandos=['ff','def','agi','ind','totf','pu','int','anal','totm','c
 const ficha_comandos=['descricao','quirk','personalidade','historia','aparencia']
 const bot_attr=['nome','rank','aparencia','descricao','quirk','nomeheroi','genero','aniversario','idade','altura','peso','explicacaoquirk','personalidade']
 const bot_skill=['comando','nome','descricao','cd','aparencia','categoria','alcance','efeito','anula','fraquezas','quantidade']
+const bot_treino=['aparencia','descricao','cd','status_min','status_max','nome','marcial_min','marcial_max']
 //est
 client.on("ready", () => {
 console.log('Olá Mundo')
@@ -146,6 +147,13 @@ function retornar_skill(bot, skill){
    }
    
 }
+function retornar_treino(tipo_treino){
+   treino=db.get("treino").find({comando: tipo_treino}).value() 
+   if(treino!=undefined){      
+      return treino   
+   }
+   
+}
 function calculo_string(calculo,bot){
    calculo=calculo.toLowerCase().replace(/[,]/g,'.');
    status_comandos.forEach(s=>{      
@@ -182,16 +190,16 @@ function compararHora(hora1, hora2)
 function cds(skill){
    let hora =  moment().format('hh:mm')
    
-   cd = db.get("cd").find({comando: skill.comando,bot_comando:skill.bot_comando , user: message.author.id}).value()
-   let c=(parseInt(skill.cd))*60*1000
-   console.log(message.author)
+   cd = db.get("cd").find({comando: skill.comando, user: message.author.id}).value()
+   let c=(parseInt(skill.cd))*60*60*1000
+   console.log(c, hora)
    if(cd!=undefined){      
       if(compararHora(hora,cd.tempo_final)==true){
-         cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd)-1, 'minutes').format('hh:mm')
-         db.get("cd").find({comando: skill.comando, bot_comando: skill.bot_comando , user: message.author.id}).assign(cd).write()
+         cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd), 'hour').format('hh:mm')
+         db.get("cd").find({comando: skill.comando, user: message.author.id}).assign(cd).write()
          setTimeout(() => {            
             db.get("cd").remove({comando: skill.comando, bot_comando: skill.bot_comando , user: message.author.id}).write()
-            message.reply(`Skill ":${skill.bot_comando} ${skill.comando}" habilitada`)
+            message.reply(`Treino liberado`)
           }, c);
          return true
       } else{
@@ -199,14 +207,13 @@ function cds(skill){
       }    
    }else{
       cd =new Object
-      cd.user=message.author.id
-      cd.bot_comando=skill.bot_comando
+      cd.user=message.author.id     
       cd.comando=skill.comando
       cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd)-1, 'minutes').format('hh:mm')
       db.get("cd").push(cd).write() 
       setTimeout(() => {
-         db.get("cd").remove({comando: skill.comando, bot_comando: skill.bot_comando , user: message.author.id}).write()   
-         message.reply(`Skill "%${skill.bot_comando} ${skill.comando}" habilitada`)
+         db.get("cd").remove({comando: skill.comando, user: message.author.id}).write()   
+         message.reply(`Treino liberado`)
        }, c);
       return true 
    }
@@ -456,8 +463,26 @@ function view_skill_ficha(skill){
       msn+="\n"  
    return msn
 } 
+function view_treino(treino,comando){
+   let msn=''   
+   //if(treino.aparencia!='') msn+=`${treino.aparencia}\n`
+      msn+= '```d\n'   
+      msn+=(treino.nome==undefined || treino.nome=='') ? `***Add o nome para o treino*** \n%${comando}-${treino.comando}-nome\n` : `💪 ${treino.nome} 💪 \n`
+      msn+=(treino.status_min==undefined || treino.status_min=='0'||treino.status_min=='' ) ? `***Add a recompensa minima para os pontos de status*** \n%${comando}-${treino.comando}-status_min\n` : ``
+      msn+=(treino.status_max==undefined || treino.status_max=='0'||treino.status_max=='' ) ? `***Add a recompensa maxima para os pontos de status*** \n%${comando}-${treino.comando}-status_max\n` : ``
+      msn+=(treino.marcial_min==undefined || treino.marcial_min=='0'||treino.marcial_min=='' ) ? `***Add a recompensa minima para os pontos de estilo marcial*** \n%${comando}-${treino.comando}-marcial_min\n` : ``
+      msn+=(treino.marcial_max==undefined || treino.marcial_max=='0'||treino.marcial_max=='' ) ? `***Add a recompensa maxima para os pontos de estilo marcial*** \n%${comando}-${treino.comando}-marcial_max\n` : ``
+      msn+=`➤ Parabéns, ${comando} você ganhou:\n`
+      if (treino.status_min!=undefined && treino.status_max!=undefined) msn+=`↪ ${retorna_hp(parseInt(treino.status_min),parseInt(treino.status_max))} Pontos de Atributos e ${retorna_hp(parseInt(treino.marcial_min),parseInt(treino.marcial_max))} Pontos Marcias \n`
+      msn+=(treino.cd==undefined || treino.cd=='0'||treino.cd=='' ) ? `***Add o tempo de recarga do treino EM HORAS*** \n%${comando}-${treino.comando}-cd\n` : `[CoolDown:] ${treino.cd} Hora\n`
+      msn+=(treino.aparencia==undefined || treino.aparencia=='') ? `***Add uma Imagem para o treino*** \n%${comando}-${treino.comando}-aparencia\n` : ``
+      msn+="```\n"
+      msn+=''  
+      msn+="\n"  
+   return msn
+}
 function retorna_aparencia(skill){
-   if(skill.aparencia=='') return 'https://cdn.discordapp.com/attachments/839476218947567686/852911578386661416/TVKYR0CL3RE1w8xvnvDD52BWz_55dcCUA4j6e2jLBSnmuC-uddHtolQACjUMZInQc5GhvQLsdpmYL7FGVJxIz6mTGtckb0Cg2iyI.png'
+   if(skill.aparencia=='' || skill.aparencia==undefined) return 'https://media.discordapp.net/attachments/860895890520145921/920054699292504074/TVKYR0CL3RE1w8xvnvDD52BWz_55dcCUA4j6e2jLBSnmuC-uddHtolQACjUMZInQc5GhvQLsdpmYL7FGVJxIz6mTGtckb0Cg2iyI.png'
    return skill.aparencia
 }
 function verificar_existencia_comando(comando){
@@ -1172,6 +1197,16 @@ if (verificar_comando(comando)==true){
          return message.channel.send(msn)
 
       }
+      else if(comando=='addtreino'){  
+         if(resposta.indexOf("-") !== -1) return message.channel.send('Por favor informe um comando sem "-" !')
+         tipo_treino = new Object
+         tipo_treino.comando= resposta
+         db.get("treino").push(tipo_treino).write()
+         let msn='```'
+         msn+=`Use "%sua_ficha ${resposta}" para visualizar os detalhes do treino!`
+         msn+='```'
+         return message.channel.send(msn)
+      }
       else if(comando=='ajustarskills'){
          let msn=''   
          msn+= '```ini\n'
@@ -1602,7 +1637,25 @@ QTD| Item\n`
             msn+='```'
             return message.channel.send(msn)             
                        
-         }     
+         }
+         else if(resposta==retornar_treino(resposta).comando){  
+            treino = retornar_treino(resposta)  
+            if (cds(treino)==true){
+            
+                  return message.channel.send(view_treino(treino,comando), {
+                     files: [
+                        `${retorna_aparencia(treino)}`
+                     ]
+                  })  
+                        
+               
+                         
+            }else{
+               return message.channel.send('Treino em tempo de recarga')
+            }
+                     
+                
+         }       
          else if(resposta==retornar_skill(comando, resposta).comando){           
             skill = retornar_skill(comando, resposta)            
             if(skill.tipo=='item'){
@@ -1616,7 +1669,8 @@ QTD| Item\n`
                   return message.channel.send('Habilidade em CoolDown! ')
                }
             }            
-         }   
+         } 
+         
                       
          
       }
@@ -1740,7 +1794,20 @@ QTD| Item\n`
              skill.tipo='item'            
             db.get("skills").push(skill).write()
             return message.channel.send(`Bot ${bot.nome} teve item com comando "%${bot.comando} ${skill.comando}" criado!`) 
-      }  
+      } 
+      if(retornar_treino(com.acao)!=undefined) {
+         if(com.acao==retornar_treino(com.acao).comando){
+            let treino=retornar_treino(com.acao)
+            bot_treino.forEach(s=>{
+               if(com.acao2==s){   
+                  console.log(s, com.acao2, resposta)      
+                  treino[`${s}`] = resposta;                 
+                  db.get("treino").find({comando:treino.comando}).assign(treino).write()
+                  return message.channel.send(`Treino ${treino.comando}  teve o atributo ${s} atualizado!`)
+               }      
+            })
+         }
+      }
       if(retornar_skill(com.comando,com.acao)!=undefined){     
          if(com.acao==retornar_skill(com.comando,com.acao).comando){
             bot_skill.forEach(s=>{

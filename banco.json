@@ -65,6 +65,9 @@
     },
     {
       "comando": "popularidade"
+    },
+    {
+      "comando": "addtreino"
     }
   ],
   "cd": [],
@@ -216,6 +219,38 @@
         "cei": 0,
         "popularidade": 5.5
       }
+    },
+    {
+      "nome": "",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012115966836757"
+      ],
+      "comando": "alabart",
+      "rank": "",
+      "aparencia": "",
+      "descricao": "",
+      "quirk": "",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": 0
     }
   ],
   "skills": [
@@ -284,6 +319,15 @@
     {
       "comando": "lived",
       "saldo": 4900
+    },
+    {
+      "comando": "alabart",
+      "saldo": 0
+    }
+  ],
+  "treino": [
+    {
+      "comando": "treinoleve"
     }
   ]
 }

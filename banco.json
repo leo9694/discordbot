@@ -376,7 +376,7 @@
       "aniversario": "16/04",
       "altura": "1,60",
       "peso": "48kg",
-      "explicacaoquirk": "Nis possui asas devido a genética de seu pai, mas elas só aparecem quando ela ativa sua individualidade de sombras herdada de sua mãe. Ela usa as sombras para manipular as penas e consegue se teletransportar também, além de outros tipos de manipulações das sombras, sendo a maioria delas focadas em suas asas.\n\n↪️ Passiva:\nAo ativar suas habilidades asas aparecem em suas costas, aumentando sua velocidade e a fazendo voar.",
+      "explicacaoquirk": "Nis possui asas devido a genética de seu pai, mas elas só aparecem quando ela ativa sua individualidade de sombras herdada de sua mãe. Ela usa as sombras para manipular as penas e consegue se teletransportar também, além de outros tipos de manipulações das sombras, sendo a maioria delas focadas em suas asas.\n\n↪️ Passiva:\nAo ativar suas habilidades asas aparecem em suas costas, aumentando sua velocidade e a fazendo voar.\n[30% de IND em AGI]",
       "nomeheroi": "Fallen",
       "personalidade": "In RP"
     },
@@ -548,9 +548,9 @@
       ],
       "comando": "shiro",
       "rank": "",
-      "aparencia": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/897124697932718123/908563576040599572/7f701b150b5c86de56c174023df0ce94.jpg",
       "descricao": "",
-      "quirk": "",
+      "quirk": "Copy 🖨",
       "hp_minimo": 0,
       "hp_maximo": 0,
       "status": {
@@ -568,10 +568,15 @@
         "cei": 0,
         "popularidade": 5.5
       },
-      "aprovacao": 0,
+      "aprovacao": "1",
       "idade": "16",
       "genero": "Masculino",
-      "aniversario": "12/05"
+      "aniversario": "12/05",
+      "peso": "87kg",
+      "altura": "1,97m",
+      "nomeheroi": "Thief",
+      "explicacaoquirk": "Consegue copiar a individualidade ao toque. Armazena uma por vez, caso pegue outra a que estava antes não existirá mais. Só consegue usar técnicas das individualidades caso copie as técnicas, algumas técnicas não poderão ser copiadas, quirks que sejam de acumulos, não podem ser copiadas.\n\n↪ Passiva:\n\nCópia a Individualidade com o toque de suas mãos. \n\nSe usar contra o usuário original sua IND é reduzida em 30%\n\nSe usar em conjunto com o usuário original sua IND é aumentada em 30%\n\nSe usada contra um terceiro, ele tem 15% a mais de IND\n\nEle pode ter até 2 cópias ao mesmo tempo, porém elas ficam ativas apenas por 3 turnos e não pode utilizar as duas juntos, após os 3 turnos é necessário pegar novamente a Individualidade.\n\nCaso a quirk possua efeito negativo no usuário, em Shiro o efeito será dobrado.",
+      "personalidade": "Shiro é uma pessoa fria e sem emoções, geralmente não se importa muito com as pessoas e o que elas sentem em especial com aquelas que dizem que acreditam na \"justiça\", \"Heróis\" e que há o bem em todos. Devido a acontecimentos em seu passado ele se tornou alguém muito indiferente em relação ao que acontece ao seu redor indo de se intrometer numa briga desnecessária a deixar que uma pessoa morra caso não veja necessidade de intervir"
     },
     {
       "nome": "",

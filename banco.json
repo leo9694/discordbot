@@ -70,7 +70,14 @@
       "comando": "addtreino"
     }
   ],
-  "cd": [],
+  "cd": [
+    {
+      "cd": "",
+      "comando": "xrl8",
+      "bot_comando": "alabart",
+      "tipo": "turno"
+    }
+  ],
   "fichas_bots": [
     {
       "nome": "Shoyu Shimada",

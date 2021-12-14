@@ -1638,24 +1638,26 @@ QTD| Item\n`
             return message.channel.send(msn)             
                        
          }
-         else if(resposta==retornar_treino(resposta).comando){  
-            treino = retornar_treino(resposta)  
-            if (cds(treino)==true){
-            
-                  return message.channel.send(view_treino(treino,comando), {
-                     files: [
-                        `${retorna_aparencia(treino)}`
-                     ]
-                  })  
-                        
+         else if(retornar_treino(resposta)!=undefined){
+            if(resposta==retornar_treino(resposta).comando){  
+               treino = retornar_treino(resposta)  
+               if (cds(treino)==true){
                
-                         
-            }else{
-               return message.channel.send('Treino em tempo de recarga')
-            }
-                     
-                
-         }       
+                     return message.channel.send(view_treino(treino,comando), {
+                        files: [
+                           `${retorna_aparencia(treino)}`
+                        ]
+                     })  
+                           
+                  
+                            
+               }else{
+                  return message.channel.send('Treino em tempo de recarga')
+               }
+                        
+                   
+            }    
+         }            
          else if(resposta==retornar_skill(comando, resposta).comando){           
             skill = retornar_skill(comando, resposta)            
             if(skill.tipo=='item'){

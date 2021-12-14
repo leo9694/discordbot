@@ -71,18 +71,7 @@
     }
   ],
   "cd": [
-    {
-      "cd": "",
-      "comando": "xrl8",
-      "bot_comando": "alabart",
-      "tipo": "turno"
-    },
-    {
-      "cd": "",
-      "comando": "fragrance",
-      "bot_comando": "hana",
-      "tipo": "turno"
-    }
+    
   ],
   "fichas_bots": [
     {

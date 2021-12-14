@@ -224,7 +224,7 @@ function cd_skill(skill){
    if (cd==undefined){
       return true   
    }else{
-      if (parseInt(cd.cd)<0){
+      if (parseInt(cd.cd)<=0 || cd.cd=='' ){
          db.get("cd").remove({comando: skill.comando,bot_comando:skill.bot_comando}).write()
          return true
       }

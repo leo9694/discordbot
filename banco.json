@@ -662,7 +662,64 @@
       "personalidade": "Seu rosto sempre Esboça um sentimento de raiva,ele é um pouco estressado por causa de seu treinamento no Tatame de Obatsu,então esta quase sempre cansado,mesmo assim ele pode fazer amigos e ter uma boa relação com eles,e tem ódio profundo aos seus inimigos."
     }
   ],
-  "skills": [],
+  "skills": [
+    {
+      "bot_comando": "shoyu",
+      "comando": "teste",
+      "nome": "",
+      "descricao": "",
+      "cd": "",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "alabart",
+      "comando": "xrl8",
+      "nome": "",
+      "descricao": "",
+      "cd": "",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "alabart",
+      "comando": "xrl",
+      "nome": "",
+      "descricao": "",
+      "cd": "",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "hana",
+      "comando": "fragrance",
+      "nome": "",
+      "descricao": "",
+      "cd": "",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    }
+  ],
   "combate": [
     {
       "id": 1,
@@ -761,5 +818,19 @@
       "saldo": 0
     }
   ],
-  "treino": []
+  "treino": [
+    {
+      "comando": "teste"
+    },
+    {
+      "comando": "treinoleve",
+      "nome": "Treinamento Leve",
+      "status_min": "50",
+      "status_max": "100",
+      "marcial_min": "1",
+      "marcial_max": "1",
+      "aparencia": "https://media.discordapp.net/attachments/839476218947567686/845030978060812318/Treino-Leve.gif",
+      "cd": "8"
+    }
+  ]
 }

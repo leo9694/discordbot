@@ -71,7 +71,12 @@
     }
   ],
   "cd": [
-    
+    {
+      "cd": "0",
+      "comando": "fragrance",
+      "bot_comando": "hana",
+      "tipo": "turno"
+    }
   ],
   "fichas_bots": [
     {
@@ -321,11 +326,11 @@
       "hp_minimo": 0,
       "hp_maximo": 0,
       "status": {
-        "def": 0,
-        "ff": 0,
-        "agi": 0,
+        "def": "200",
+        "ff": "50",
+        "agi": "200",
         "mec": 0,
-        "ind": 0,
+        "ind": "550",
         "pu": 0,
         "int": 0,
         "anal": 0,
@@ -333,7 +338,9 @@
         "caf": 0,
         "cam": 0,
         "cei": 0,
-        "popularidade": 5.5
+        "popularidade": 5.5,
+        "aprovacao": 0,
+        "nivel": "0"
       },
       "aprovacao": "1",
       "nomeheroi": "Nosferatu",
@@ -680,34 +687,6 @@
       "fraquezas": ""
     },
     {
-      "bot_comando": "alabart",
-      "comando": "xrl8",
-      "nome": "",
-      "descricao": "",
-      "cd": "5",
-      "aparencia": "",
-      "categoria": "",
-      "alcance": "",
-      "efeito": "",
-      "anula": "",
-      "status": [],
-      "fraquezas": ""
-    },
-    {
-      "bot_comando": "alabart",
-      "comando": "xrl",
-      "nome": "",
-      "descricao": "",
-      "cd": "",
-      "aparencia": "",
-      "categoria": "",
-      "alcance": "",
-      "efeito": "",
-      "anula": "",
-      "status": [],
-      "fraquezas": ""
-    },
-    {
       "bot_comando": "hana",
       "comando": "fragrance",
       "nome": "",
@@ -720,44 +699,150 @@
       "anula": "",
       "status": [],
       "fraquezas": ""
-    }
-  ],
-  "combate": [
-    {
-      "id": 1,
-      "lutadores": [
-        "shoyu",
-        "lived"
-      ],
-      "turno": 77
-    }
-  ],
-  "efeitos": [
-    {
-      "comando": "lived",
-      "nome": "Trap",
-      "efeito": "",
-      "turno": 1,
-      "descricao": "Sobre efeito da trap por 1 turno",
-      "nivel": "D"
     },
     {
-      "comando": "lived",
-      "nome": "Trap",
+      "bot_comando": "samaelle",
+      "comando": "cromwell",
+      "nome": "",
+      "descricao": "⪻ CEI 1 | Cromwell Invocation ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Transforma seu corpo em um slime de sangue, podendo se moldar como quiser até mesmo se transformar em animais. Pode dividir seu corpo em 2 pedaços que também podem se moldar para transformar\n\n[Categoria] |• ➤ Transformação.\n[Alcance] ∘ |•➤ Corpo a Corpo\n[Dano] |• ➤ +20% de IND em IND e AGI\n[Efeitos 2º] |• ➤ Caso se dívida seu HP é dividido igualmente entre as divisões.\n[Anula] |• ➤ NP\n[Efeito colateral] |• ➤ Sua Defesa é dividia igual a quantidade de monstros, caso algum monstro morra, recupera 5% de HP, pode ficar 5 turnos nesse estado, não podendo utilizar outra skill caso esteja dividido. E fica em fadiga quando termina a skill. (pode atacar duas vezes caso esteja divido).",
+      "cd": "5",
+      "aparencia": "https://images-ext-2.discordapp.net/external/zoJMQW4Dfqv4WlnWE_y57HLrwFgbvrAGg2dc15SsoBA/https/giffiles.alphacoders.com/917/91700.gif?width=448&height=245",
+      "categoria": "",
+      "alcance": "",
       "efeito": "",
-      "turno": 1,
-      "descricao": "Sobre efeito da trap por 1 turno",
-      "nivel": "D"
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
     },
     {
-      "comando": "lived",
-      "nome": "Trap",
+      "bot_comando": "alabart",
+      "comando": "xrl8",
+      "nome": "",
+      "descricao": "⪻ CEI 1 | XRL8 ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Usa todos os teleportes de sua passiva ao mesmo tempo, para poder dar todo o dano em uma pessoa\n[Categoria] |• ➤ Ataque\n[Alcance] ∘ |•➤ Corpo a Corpo\n[Dano] |• ➤ (FF+AGI+IND)\n[Efeitos 2º] |• ➤ NP\n[Anula] |• ➤ Ataques basicos e defesa basica\n[Efeito colateral] |• ➤ Fica sem poder utilizar a passiva para ataque no turno seguinte. Para defender essa skill, é necessário ter Anal = 1/2 da AGI de Alabart",
+      "cd": "5",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
       "efeito": "",
-      "turno": 1,
-      "descricao": "Sobre efeito da trap por 1 turno",
-      "nivel": "D"
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "samaelle",
+      "comando": "mimir",
+      "nome": "",
+      "descricao": "⪻ CEI 2 | Durma bem ^^ ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Cria uma caixão de sangue vivo e resistente, que aprisiona uma pessoa dentro dele.\n[Categoria] |• ➤ TRAP\n[Alcance] ∘ |•➤ 1 alvo\n[Dano] |• ➤ IND*3 por Turno (defensável)\n[Efeitos 2º] |• ➤ Caixão DEF = IND+DEF*2, causa Bleeding 1\n[Anula] |• ➤ NP\n[Efeito colateral] |• ➤ Caso seja ativo, Samaelle perde 20% de IND em HP como sacrifício. O Caixão tem a mesma agilidade de Samaelle, podendo desviar de ataques externos. Depois de ativo, o caixão dura 3 turnos.",
+      "cd": "5",
+      "aparencia": "https://i.pinimg.com/originals/5b/35/bc/5b35bc5a857ac378ca850fd241e6794f.gif",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "samaelle",
+      "comando": "sangrar",
+      "nome": "",
+      "descricao": "⪻ CEI 3 | SANGRAR ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Cria tentáculos que aumentam sua agilidade e poder de ataque, também podendo causar sangramentos com suas pontas afiadas.\n[Categoria] |• ➤ Suporte/Autobuff\n[Alcance] ∘ |•➤ Corpo a Corpo\n[Dano] |• ➤ + 10% de IND em AGI e IND\n[Efeitos 2º] |• ➤ Seus ataques básicos passam a dar Bleeding 1\n[Anula] |• ➤ NP\n[Efeito colateral] |• ➤ NP",
+      "cd": "5",
+      "aparencia": "https://media.discordapp.net/attachments/859799572736770058/920381529564262400/dcxz8s0-68311b3a-26f2-4de7-84e8-3c4f757487aa.png?width=537&height=418",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "alabart",
+      "comando": "boogiewoogie",
+      "nome": "",
+      "descricao": "⪻CEI 2| BOOGIE WOOGIE ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Troca de lugar com qualquer objeto ou pessoa, batendo palmas (Efeito visual)\n[Categoria] |• ➤ Ataque/Defesa\n[Alcance] ∘ |• ➤ Longa Distância\n[Dano/Defesa] |• ➤ AGI+IND *2 (Para atacar ou pra defender)\n[Efeitos 2º] |• ➤ NP\n[Anula] |• ➤ Ataques e Defesas Básicos\n[Fraquezas] |• ➤ Para se utilizar em chars, sua IND tem que ser maior que o ANAL da pessoa, caso contrário a skill falhará.\n[Efeito colateral] |• ➤ NP",
+      "cd": "5",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "alabart",
+      "comando": "toradepau",
+      "nome": "",
+      "descricao": "⪻ CEI 3 | TORA DE PAU ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Como o Jutsu de Substituição se substituindo com um objeto, uma tora de pau, quando leva um ataque, consegue usar essa skill para evita-lo.\n[Categoria] |• ➤ Esquiva\n[Alcance] ∘ |• ➤ NP\n[Dano/Defesa] |• ➤ AGI*3\n[Efeitos 2º] |• ➤ NP\n[Anula] |• ➤ Ataque Básico e Marcial 15\n[Fraquezas] |• ➤ NP\n[Efeito colateral] |• ➤ NP",
+      "cd": "5",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "elise",
+      "comando": "touch",
+      "nome": "",
+      "descricao": "⪻ CEI 1 | Touch ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Abre mão de sua passiva, para anular um ataque de individualidade.\n[Categoria] |• ➤ Defesa\n[Alcance] ∘ |•➤ Corpo a Corpo\n[Dano] |• ➤ NP\n[Efeitos 2º] |• ➤ Retira o STATUS IND do ataque do inimigo \n[Anula] |• ➤ NP\n[Efeito colateral] |• ➤ Sua Passiva só volta depois de 2 turnos",
+      "cd": "5",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "elise",
+      "comando": "extracao",
+      "nome": "",
+      "descricao": "⪻ CEI 2 | Extração ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Concentra seu ataque em uma pessoa.\n[Categoria] |• ➤ Ataque\n[Alcance] ∘ |•➤ Corpo a Corpo\n[Dano] |• ➤ IND+AGI*2\n[Efeitos 2º] |• ➤ Toca na pessoa, fazendo com que ela fique sem individualidade por 3 turnos\n[Anula] |• ➤ NP\n[Efeito colateral] |• ➤ Perde sua passiva por 3 turnos.",
+      "cd": "5",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "elise",
+      "comando": "superacao",
+      "nome": "",
+      "descricao": "⪻ CEI 3 | Superação ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Abre mão de sua passiva para aumentar seus status físicos\n[Categoria] |• ➤ Suporte\n[Alcance] ∘ |•➤ Corpo a Corpo (Buff)\n[Dano] |• ➤ 10% de IND em DEF, 10% de IND em AGI, 10% de IND em FF\n[Efeitos 2º] |• ➤ Seus cabelos ficam esvoaçantes\n[Anula] |• ➤ NP\n[Efeito colateral] |• ➤ Dura 3 turnos, fica sem passiva durante o uso.",
+      "cd": "5",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
+    },
+    {
+      "bot_comando": "klaus",
+      "comando": "infinity",
+      "nome": "",
+      "descricao": "⪻ CEI 1 | Infinity Point ⪼\n\n[Rank] |• ➤ E\n[Descrição] |• ➤ Klaus cria um em um ponto no espaço, uma certa área onde o espaço é criado e subtraído, as forças de \"empurrar\" e \"puxar\", estão situadas juntas nesse local.\nLogo quem for pego por essa armadilha, será puxado, logo em seguida empurrado, tudo isso em um movimento em espiral.\n[Categoria] |• ➤ Defesa/ Armadilha \n[Alcance] ∘ |• ➤ A distância\n[Dano] |• ➤ Comando \"%klaus trap-e (personagem atacado)\"\n[Efeitos 2º] |• ➤ Caso seja pega pela armadilha a pessoa fica stunada por um turno, depois desse turno perde 25% de IND(Klaus) em AGI durante os 2 turnos seguintes.\n[Anula] |• ➤ NP\n[Efeito colateral] |• ➤ A armadilha fica ativa por 3 turnos. Depois disso ela se desativa sozinha (Dar o comando os três turnos)",
+      "cd": "5",
+      "aparencia": "",
+      "categoria": "",
+      "alcance": "",
+      "efeito": "",
+      "anula": "",
+      "status": [],
+      "fraquezas": ""
     }
   ],
+  "combate": [],
+  "efeitos": [],
   "conta_bancaria": [
     {
       "comando": "banco",

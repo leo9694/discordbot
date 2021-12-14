@@ -73,43 +73,6 @@
   "cd": [],
   "fichas_bots": [
     {
-      "nome": "",
-      "funcao": "ficha",
-      "permissoes": [
-        "834960983797399623",
-        "853736404567719958",
-        "859141068800524328"
-      ],
-      "comando": "lived",
-      "rank": "",
-      "aparencia": "",
-      "descricao": "",
-      "quirk": "",
-      "hp_minimo": 0,
-      "hp_maximo": 0,
-      "status": {
-        "def": 0,
-        "ff": 0,
-        "agi": 0,
-        "mec": 0,
-        "ind": 0,
-        "pu": 0,
-        "int": 0,
-        "anal": 0,
-        "cab": 0,
-        "caf": 0,
-        "cam": 0,
-        "cei": 0,
-        "nivel": "1",
-        "popularidade": 5.5,
-        "aprovacao": 0,
-        "hp_atual": 1000,
-        "descansando": 1
-      },
-      "aprovacao": 0,
-      "popularidade": 5.5
-    },
-    {
       "nome": "Shoyu Shimada",
       "funcao": "ficha",
       "permissoes": [
@@ -221,18 +184,18 @@
       }
     },
     {
-      "nome": "",
+      "nome": "Lived Legna",
       "funcao": "ficha",
       "permissoes": [
         "834960983797399623",
         "853736404567719958",
-        "920012115966836757"
+        "897931760422248479"
       ],
-      "comando": "alabart",
+      "comando": "lived",
       "rank": "",
-      "aparencia": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/860895890520145921/920032215017062410/sung-jin-woo.gif",
       "descricao": "",
-      "quirk": "",
+      "quirk": "Monarca das Sombras 💀",
       "hp_minimo": 0,
       "hp_maximo": 0,
       "status": {
@@ -250,43 +213,456 @@
         "cei": 0,
         "popularidade": 5.5
       },
-      "aprovacao": 0
-    }
-  ],
-  "skills": [
-    {
-      "bot_comando": "lived",
-      "comando": "faca",
-      "nome": "",
-      "descricao": "",
-      "aparencia": "",
-      "tipo": "item",
-      "quantidade": "2"
+      "aprovacao": "1",
+      "nomeheroi": "Legna",
+      "idade": "16",
+      "genero": "Masculino",
+      "aniversario": "16/04",
+      "peso": "85",
+      "altura": "1,84m",
+      "explicacaoquirk": "Lived tem um certo controle sobre as sombras, utilizando elas para se fortalecer fisicamente, porém a principal função de sua individualidade é controlar as Sombras dos outros (Skill).\n\n↪ Passiva:\n[+15% de IND em FF]\n[+15% de IND em AGI]",
+      "personalidade": "Frio e Calculista. Apesar de ser uma boa pessoa; existe muitas trevas em seu coração deixadas por sua família; quer fazer amigos. Porém; tem problemas em se relacionar com pessoas; por causa do seu ego inflado; não consegue seguir ordem de quem não admira; apesar dos pesares; na hora em que é preciso; realmente da pra contar com ele; sendo um bom líder."
     },
     {
-      "bot_comando": "lived",
-      "comando": "sombra",
-      "nome": "",
+      "nome": "Hana Kossetsu",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012699818164235"
+      ],
+      "comando": "hana",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/860895890520145921/920031510323683379/70023f07813413d51d3008ffe11123f9bfc242d5.png",
       "descricao": "",
-      "cd": "2",
-      "aparencia": "",
-      "categoria": "",
-      "alcance": "",
-      "efeito": "",
-      "anula": "",
-      "status": [],
-      "fraquezas": ""
+      "quirk": "Fragrance 🌹",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "Fragrance",
+      "idade": "16",
+      "genero": "Feminino",
+      "aniversario": "14/04",
+      "peso": "65 kg",
+      "altura": "1,70m",
+      "explicacaoquirk": "Tem um olfato aguçado, no qual ela pode absorver cheiros, ou simplesmente exalar cheiros. Esses cheiros podem servir como ataque, buff ou debuff's. Ao absorver um cheiro, pode adquirir caracteristicas do cheiro absorvido, como por exemplo, ao sentir o cheiro de um cachorro, pode ficar peluda e com os sentidos do cachorro, ou absorver o cheiro de uma rosa, seu cabelo mudaria para a cor da rosa e seu corpo se encheria de espinhos.\n\n↪ Passiva \n Hana pode sentir o cheiro melhor que os outros, por isso tem grande status de Analise\n\n[10% de IND em ANAL.]\n\nHana consegue também absorver o cheiro das coisas, caso absorva o cheiro de um player, ganhará [10% de sua IND] no status mais alto da pessoa.",
+      "personalidade": "Hana é uma pessoa muito calma, fala as verdades e tem um pouco de inocência. É uma pessoa bem inteligente, já que para absorver os cheiros, é necessário estudar ou ter afinidade com o que absorveu."
     },
     {
-      "bot_comando": "lived",
-      "comando": "espada",
-      "nome": "",
-      "descricao": "FODONA!!",
-      "aparencia": "https://cdn.discordapp.com/attachments/836610893412171837/907687207580606494/47315_1_20190710194622.png",
-      "tipo": "item",
-      "quantidade": "1"
+      "nome": "𝕋ℍ𝔼𝕄",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012300189044736"
+      ],
+      "comando": "them",
+      "rank": "",
+      "aparencia": "https://media.discordapp.net/attachments/851926193409753108/851932789230272522/SELLA_ICNS_.jpg?width=418&height=418",
+      "descricao": "",
+      "quirk": "Reptil 🦎",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "Godzilla",
+      "idade": "14",
+      "genero": "Masculino",
+      "aniversario": "03/08",
+      "altura": "1,56",
+      "peso": "45",
+      "explicacaoquirk": "Basicamente ele possui características de um lagarto em seu corpo, como rabo, escamas, olhos e língua duplicada, entretanto é um recurso que ele pode ou não mostrar, mas não é apenas um lagarto comum... é um lagarto radioativo, infelizmente seu rabo sempre fica exposto\n\n↪ Passiva:\nPode enxergar no escuro através de visão de calor, possui uma auto regeneração lenta que é capaz de reconstruir membros amputados fora de batalha e ganha bonus em seus status\n[20% de IND em FF]\n[10% em DEF]",
+      "personalidade": "\"THEM\" é um garoto completamente doido e fofo, sim ele fala sozinho pois diz estar ouvindo as vozes \"deles\"... deles quem? não me pergunte... ele ficou assim depois de sofrer inúmeros experimentos que acabaram lhe dando a habilidade de virar um lagarto, historias dizem que esses experimentos eram através de uma vacina para corar um vírus, é um garotinho calmo e fofo... ele vai dar tudo de si para proteger quem ama, seu coração é puro e bondoso, menos com quem é mau 😠"
+    },
+    {
+      "nome": "Samaelle Apostasia Sanctis",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920011687770349618"
+      ],
+      "comando": "samaelle",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/860895890520145921/920038914239115345/88377610_p0_master1200.png",
+      "descricao": "",
+      "quirk": "Blood Slime 🩸",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "Nosferatu",
+      "idade": "15",
+      "genero": "Feminino",
+      "aniversario": "16/09",
+      "altura": "1,58",
+      "peso": "50 kg",
+      "personalidade": "Samaelle é focada em seus objetivos e extremamente inteligente, sempre amou livros e series de investigação, por isso tenta se vestir para se parecer como uma investigadora. Entrou para a U.A com um conceito fixo de justiça, ela tem sua propria visão e quer torna-la realidade, se vê como uma vilã dos vilões, aquela que pretende arrastar criminosos para o seu caixão, se enxergando a si mesmo como uma executora.",
+      "explicacaoquirk": "Seu corpo todo é feito de sangue, basicamente pode moldar a forma dele como uma slime e se reconstruir, tal habilidade lhe torna diabolicamente poderosa e útil para missões de infiltração, também pode drenar sangue de outras pessoas para se reconstruir ou manipula-lo, seu sangue é incompatível com outros seres, ela é proibida de doar sangue\n\n↪ Passiva: \nCaso de o efeito negativo Bleeding no oponente, se cura na mesma quantidade que o oponente perde HP\n\n[20% de IND em IND]"
+    },
+    {
+      "nome": "Nis Legna",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920011898823516181"
+      ],
+      "comando": "nis",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/883536805415256194/883737515012534332/3b4b751f3698552cd0b9b86d38aae0f6.jpg",
+      "descricao": "",
+      "quirk": "Shadow Angel 🦅",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "idade": "16",
+      "genero": "Feminino",
+      "aniversario": "16/04",
+      "altura": "1,60",
+      "peso": "48kg",
+      "explicacaoquirk": "Nis possui asas devido a genética de seu pai, mas elas só aparecem quando ela ativa sua individualidade de sombras herdada de sua mãe. Ela usa as sombras para manipular as penas e consegue se teletransportar também, além de outros tipos de manipulações das sombras, sendo a maioria delas focadas em suas asas.\n\n↪️ Passiva:\nAo ativar suas habilidades asas aparecem em suas costas, aumentando sua velocidade e a fazendo voar.\n[30% de IND em AGI]",
+      "nomeheroi": "Fallen",
+      "personalidade": "In RP"
+    },
+    {
+      "nome": "Kate Ukyo Addams",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012302164557854"
+      ],
+      "comando": "kate",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/860895890520145921/920045688744730724/f01dc16ce28ae723ac9eda169d19e50c.png",
+      "descricao": "",
+      "quirk": "Duplication 👥👥",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "DupliKate",
+      "idade": "16",
+      "genero": "Masculino",
+      "aniversario": "14/03",
+      "altura": "1,82m",
+      "peso": "60kg",
+      "explicacaoquirk": "Kate pode criar clones a partir de sua própria pessoa, ou a partir de outros clones, os clones assim podem ajuda-lo a atacar e defender\n\n↪ Passiva: \nPode criar Clones, porém seus status serão divididos em quantos clones criar, somados a sua Individualidade.\n\nExemplo:\n\n[Se ele tem 1000 de FF, e fizer um clone a partir dele, os dois terão 500 de FF cada.]\n\n[Caso crie mais um, a partir dele, ficara assim:\nOriginal: 250\nClone 1: 500\nClone 2: 250]\n\nSempre dividirá por 2, a partir do status que estava anteriormente.",
+      "personalidade": "Ukyo é alguém que preza a gentileza, e a educação, mas se irrita facilmente, Kate gosta de Café com podcast e ler perto da luz natural, o tipo de garoto de (cof cof manga shoujo) cidade pequena que gosta de calmaria."
+    },
+    {
+      "nome": "Yohan Yuzuru",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012530049486878"
+      ],
+      "comando": "yohan",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/860895890520145921/920050807829835846/koe-no-katachi.gif",
+      "descricao": "",
+      "quirk": "Photo 📸",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "Picture",
+      "idade": "13",
+      "genero": "Masculino",
+      "aniversario": "12/01",
+      "altura": "1,12",
+      "peso": "40kg",
+      "explicacaoquirk": "Yohan consegue tirar fotos com seus olhos, logo então, ela é impressa por sua boca, saindo a foto do momento, ele consegue manipular o momento da foto, para trocar objetos de lugares ou voltar objetos para suas posições originais.\n\n↪ Passiva:\nA foto tirada será impressa no turno seguinte\n\nPode trocar Objetos de lugar na foto, ou chars.\nNecessário [IND>STATUSFISICOPREDOMINANTE p/ char]\n\nInvoca Objeto que está na foto.\n\nA foto se destruirá se:\n[-]For utilizada em algum dos casos acima\n[-] Passar 3 turnos.\n\nYohan só pode ter uma foto por vez em sua mão\n\nEnquanto uma foto estiver ativa, Yohan não consegue tirar outras fotos, a menos que seja via Skill.",
+      "personalidade": "Um garoto que não liga em dizer o que pensa, ama arte e fotografia, costuma se meter em conversas e adora aparecer do nada, tem uma fixação por objetos, gostando deles mais do que pessoas e vive em busca de uma musa."
+    },
+    {
+      "nome": "Takeda Izuno",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012301300531251"
+      ],
+      "comando": "takeda",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/897124697932718123/900967951115649074/abd544455b298298f130d7295b3eced6.jpg",
+      "descricao": "",
+      "quirk": "Level Up 🆙",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "Double Up",
+      "idade": "16",
+      "aniversario": "16/07",
+      "peso": "75kg",
+      "altura": "1,71",
+      "genero": "Indefinido",
+      "explicacaoquirk": "Takeda tem a habilidade de projetar setas de diversos tipos ou tamanhos, cujo as mesmas são invisíveis e em algumas vezes, até intangíveis. Todas as setas são controladas por Izuno, não importando onde a mesma esteja, e algumas têm grupos diferentes, não só sendo uma espécie de \"seta comum\", algumas têm diferenças em efeitos. Mas o diferencial de sua individualidade está na maneira que suas setas são usadas/projetadas; pois quanto mais porradas suas barreiras levam, mais fortes elas ficam. Simples: quanto mais setas são quebradas ou partidas, mais setas resistentes se criam, e assim mais suas setas ficam fortes e mais resistentes. Isso vale para Izuno também, quando mais frágil em batalha ele estiver, mais forte ficará. (Em termos de golpes levados)\n\n↪ Passiva:\n\nTakeda tem uma barreira de seta em volta de si, Cada vez que a barreira de Takeda é quebrada por um golpe ela volta mais forte.\n\n[+5% de IND em IND por barreira quebrada, limite 30%]"
+    },
+    {
+      "nome": "D. Klaus",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012300545572935"
+      ],
+      "comando": "klaus",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/860895890520145921/920056180372545606/d9a0f8d8-661f-4601-8bc6-ecbfb4059097.png",
+      "descricao": "",
+      "quirk": "Limitless 🌀",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "Infinity",
+      "idade": "15",
+      "genero": "Masculino",
+      "aniversario": "10/08",
+      "altura": "1,80",
+      "peso": "90 kg",
+      "explicacaoquirk": "Manipulação precisa do espaço no nível atômico. Podendo resultar em várias técnicas diferentes, como colocar mais espaço entre si e o golpe do oponente ou diminuindo o espaço entre seu golpe e no oponente. \n\n↪️ Passiva: Mais ou Menos\n\n[Mais] ► Klaus aumenta o espaço entre ele e o oponente, diminuindo o dano do golpe do oponente em 20% de sua IND.\n\n[Menos] ►Klaus diminui o espaço entre ele e o oponente, aumentando seu ataque em 20% de sua IND.\n\n[Fraqueza] ► Só pode usar um dos dois por turno."
+    },
+    {
+      "nome": "Shiro Kawakami",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012376215007283"
+      ],
+      "comando": "shiro",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/897124697932718123/908563576040599572/7f701b150b5c86de56c174023df0ce94.jpg",
+      "descricao": "",
+      "quirk": "Copy 🖨",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "idade": "16",
+      "genero": "Masculino",
+      "aniversario": "12/05",
+      "peso": "87kg",
+      "altura": "1,97m",
+      "nomeheroi": "Thief",
+      "explicacaoquirk": "Consegue copiar a individualidade ao toque. Armazena uma por vez, caso pegue outra a que estava antes não existirá mais. Só consegue usar técnicas das individualidades caso copie as técnicas, algumas técnicas não poderão ser copiadas, quirks que sejam de acumulos, não podem ser copiadas.\n\n↪ Passiva:\n\nCópia a Individualidade com o toque de suas mãos. \n\nSe usar contra o usuário original sua IND é reduzida em 30%\n\nSe usar em conjunto com o usuário original sua IND é aumentada em 30%\n\nSe usada contra um terceiro, ele tem 15% a mais de IND\n\nEle pode ter até 2 cópias ao mesmo tempo, porém elas ficam ativas apenas por 3 turnos e não pode utilizar as duas juntos, após os 3 turnos é necessário pegar novamente a Individualidade.\n\nCaso a quirk possua efeito negativo no usuário, em Shiro o efeito será dobrado.",
+      "personalidade": "Shiro é uma pessoa fria e sem emoções, geralmente não se importa muito com as pessoas e o que elas sentem em especial com aquelas que dizem que acreditam na \"justiça\", \"Heróis\" e que há o bem em todos. Devido a acontecimentos em seu passado ele se tornou alguém muito indiferente em relação ao que acontece ao seu redor indo de se intrometer numa briga desnecessária a deixar que uma pessoa morra caso não veja necessidade de intervir"
+    },
+    {
+      "nome": "Elise Hikigane",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012918572077077"
+      ],
+      "comando": "elise",
+      "rank": "",
+      "aparencia": "https://media.discordapp.net/attachments/897124697932718123/908568300869533706/d707bb812285a3fd1877168d542a701b.jpg?width=296&height=418",
+      "descricao": "",
+      "quirk": "Nullificator ❌",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "Eraser",
+      "idade": "16",
+      "genero": "16",
+      "aniversario": "12/12",
+      "peso": "58kg",
+      "altura": "1,68",
+      "explicacaoquirk": "Desativa Individualidades periodicamente.\n\nExplicação: Elise tem que segurar sua respiração para ativar sua quirk, caso ela respire a All Nulificator é desativada.\n\n↪ Passiva: Qualquer Individualidade perto de Elise é desativada em um raio de 5 metros (3 pessoas mais próximas).\n\n[Efeitos Negativos Respiração de Elise]\n\nAté 2 turnos: Nenhuma\nTurno 3 e 4: Fadiga\nTurno 5: Começa a perder 25% do seu HP por turno até morte.\n\nPara recuperar sua respiração, Elise deve ficar a mesma quantidade de turnos respirando, que ficou com ela presa.",
+      "personalidade": "In RP"
+    },
+    {
+      "nome": "Alabart Moonterum",
+      "funcao": "ficha",
+      "permissoes": [
+        "834960983797399623",
+        "853736404567719958",
+        "920012115966836757"
+      ],
+      "comando": "alabart",
+      "rank": "",
+      "aparencia": "https://cdn.discordapp.com/attachments/860895890520145921/920107386268708905/4b584001dbe5973b8dbc8b5bc3307d00-910x512.png",
+      "descricao": "",
+      "quirk": "Teleporte ⚡",
+      "hp_minimo": 0,
+      "hp_maximo": 0,
+      "status": {
+        "def": 0,
+        "ff": 0,
+        "agi": 0,
+        "mec": 0,
+        "ind": 0,
+        "pu": 0,
+        "int": 0,
+        "anal": 0,
+        "cab": 0,
+        "caf": 0,
+        "cam": 0,
+        "cei": 0,
+        "popularidade": 5.5
+      },
+      "aprovacao": "1",
+      "nomeheroi": "Flecha",
+      "idade": "15",
+      "genero": "Masculino",
+      "aniversario": "14/06",
+      "altura": "1,67",
+      "peso": "80kg",
+      "explicacaoquirk": "Alabart troca de posição com objetos, tanto trocando de lugar com ele, tanto indo até ele, ou fazer o objeto ir até ele, ele tem um limite de objetos que podem sofrer o teleporte, e está limitado a 5 corpos, tanto materiais como orgânicos.\nAo obter contato direto com o objeto ele ontem o selo,o objeto será representado por um de seus dedos de cada mão.\n\n↪ Passiva:\n[Passiva: Cinco Pontos]\n\nA passiva é diferente pra ataque e pra defesa.\n\nAtaque: Alabart pode atacar até 5 alvos se teleportando, porém cada teleporte diminui o dano pela metade.\n\ntp1 - Dano Total\ntp2 - Dano total/2\ntp3 - Dano tp2/2\ntp4 - Dano tp3/2\ntp5 - Dano tp4/2\n\nDefesa: \nAlabart pode desviar de até 5 golpes no mesmo turno, utilizando + Anal nos desvios. Porém a partir do 6 golpe não poderá mais desviar, terá que defender o ataque.",
+      "personalidade": "Seu rosto sempre Esboça um sentimento de raiva,ele é um pouco estressado por causa de seu treinamento no Tatame de Obatsu,então esta quase sempre cansado,mesmo assim ele pode fazer amigos e ter uma boa relação com eles,e tem ódio profundo aos seus inimigos."
     }
   ],
+  "skills": [],
   "combate": [
     {
       "id": 1,
@@ -298,6 +674,22 @@
     }
   ],
   "efeitos": [
+    {
+      "comando": "lived",
+      "nome": "Trap",
+      "efeito": "",
+      "turno": 1,
+      "descricao": "Sobre efeito da trap por 1 turno",
+      "nivel": "D"
+    },
+    {
+      "comando": "lived",
+      "nome": "Trap",
+      "efeito": "",
+      "turno": 1,
+      "descricao": "Sobre efeito da trap por 1 turno",
+      "nivel": "D"
+    },
     {
       "comando": "lived",
       "nome": "Trap",
@@ -321,13 +713,53 @@
       "saldo": 4900
     },
     {
+      "comando": "lived",
+      "saldo": 0
+    },
+    {
+      "comando": "hana",
+      "saldo": 0
+    },
+    {
+      "comando": "them",
+      "saldo": 0
+    },
+    {
+      "comando": "samaelle",
+      "saldo": 0
+    },
+    {
+      "comando": "nis",
+      "saldo": 0
+    },
+    {
+      "comando": "kate",
+      "saldo": 0
+    },
+    {
+      "comando": "yohan",
+      "saldo": 0
+    },
+    {
+      "comando": "takeda",
+      "saldo": 0
+    },
+    {
+      "comando": "klaus",
+      "saldo": 0
+    },
+    {
+      "comando": "shiro",
+      "saldo": 0
+    },
+    {
+      "comando": "elise",
+      "saldo": 0
+    },
+    {
       "comando": "alabart",
       "saldo": 0
     }
   ],
-  "treino": [
-    {
-      "comando": "treinoleve"
-    }
-  ]
+  "treino": []
 }

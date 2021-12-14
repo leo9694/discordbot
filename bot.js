@@ -6,7 +6,7 @@ const low = require('lowdb') //banco de dados
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('banco.json')
 const db = low(adapter)
-const status_comandos=['ff','def','agi','ind','totf','pu','int','anal','totm','cab','caf','cam','cei','test','qtrf','qtrm','nivel','mec']
+const status_comandos=['ff','def','agi','ind','totf','pu','int','anal','totm','cab','caf','cam','cei','test','qtrf','qtrm','nivel','mec','sp','qtf']
 const ficha_comandos=['descricao','quirk','personalidade','historia','aparencia']
 const bot_attr=['nome','rank','aparencia','descricao','quirk','nomeheroi','genero','aniversario','idade','altura','peso','explicacaoquirk','personalidade']
 const bot_skill=['comando','nome','descricao','cd','aparencia','categoria','alcance','efeito','anula','fraquezas','quantidade']
@@ -309,8 +309,8 @@ function view_status_ficha(npc){
    msn+=`➤ Combate Especialista em Individualidade (cei): [${npc.status.cei}]\n`
    msn+=`➤ Proficiência em Testes (test): [${(npc.status.test==undefined) ? `0`:npc.status.test}]\n`
    msn+='⪻Treinos⪼\n'
-   msn+=`➤ Quantidade de treinos físicos realizados (qtrf): [${(npc.status.qtrf==undefined) ? `0`:npc.status.qtrf}]\n`
-   msn+=`➤ Quantidade de treinos mentais realizados (qtrm): [${(npc.status.qtrm==undefined) ? `0`:npc.status.qtrm}]\n`
+   msn+=`➤ Quantidade de Skill Points (sp): [${(npc.status.sp==undefined) ? `0`:npc.status.sp}]\n`
+   msn+=`➤ Quantidade de treinos feitos (qtf): [${(npc.status.qtf==undefined) ? `0`:npc.status.qtf}]\n`
    msn+="```\n"  
    return msn
 }
@@ -345,8 +345,8 @@ function view_status_ficha_antiga(npc){
    msn+=`➤ Combate Especialista em Individualidade (cei): [${status_antigo.cei}]\n`
    msn+=`➤ Proficiência em Testes (test): [${(status_antigo.test==undefined) ? `0`:status_antigo.test}]\n`
    msn+='⪻Treinos⪼\n'
-   msn+=`➤ Quantidade de treinos físicos realizados (qtrf): [${(status_antigo.qtrf==undefined) ? `0`:status_antigo.qtrf}]\n`
-   msn+=`➤ Quantidade de treinos mentais realizados (qtrm): [${(status_antigo.qtrm==undefined) ? `0`:status_antigo.qtrm}]\n\n`
+   msn+=`➤ Quantidade de Skill Points (sp): [${(status_antigo.sp==undefined) ? `0`:status_antigo.sp}]\n`
+   msn+=`➤ Quantidade de treinos feitos (qtf): [${(status_antigo.qtf==undefined) ? `0`:status_antigo.qtf}]\n\n`
    msn+=`➤ Pontos fisicos distribuidos: [${total_f_novo-total_f}]\n`
    msn+=`➤ Pontos mentais distribuidos: [${total_m_novo-total_m}]\n`
    msn+=`➤ Pontos marciais distribuidos: [${total_mc_novo-total_mc}]\n`

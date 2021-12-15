@@ -10,7 +10,7 @@ const status_comandos=['ff','def','agi','ind','totf','pu','int','anal','totm','c
 const ficha_comandos=['descricao','quirk','personalidade','historia','aparencia']
 const bot_attr=['nome','rank','aparencia','descricao','quirk','nomeheroi','genero','aniversario','idade','altura','peso','explicacaoquirk','personalidade']
 const bot_skill=['comando','nome','descricao','cd','aparencia','categoria','alcance','efeito','anula','fraquezas','quantidade']
-const bot_treino=['aparencia','descricao','cd','status_min','status_max','nome','marcial_min','marcial_max']
+const bot_treino=['aparencia','descricao','cd','status_min','status_max','nome','marcial_min','marcial_max','nivel']
 //est
 client.on("ready", () => {
 console.log('Olá Mundo')
@@ -187,16 +187,18 @@ function compararHora(hora1, hora2)
 
     return data1 > data2;
 };
-function cds(skill){
-   let hora =  moment().format('hh:mm')
+function cds(skill,comando){
+   let hora =  new Date()
    
-   cd = db.get("cd").find({comando: skill.comando, user: message.author.id}).value()
+   cd = db.get("cd").find({comando: skill.comando, user: message.author.id, bot_comando:comando}).value()
    let c=(parseInt(skill.cd))*60*60*1000
    console.log(c, hora)
-   if(cd!=undefined){      
-      if(compararHora(hora,cd.tempo_final)==true){
-         cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd), 'hour').format('hh:mm')
-         db.get("cd").find({comando: skill.comando, user: message.author.id}).assign(cd).write()
+   if(cd!=undefined){     
+      console.log(hora.getTime() > new Date(cd.tempo_final).getTime())
+      
+      if(hora.getTime() > new Date(cd.tempo_final).getTime()){
+         cd.tempo_final=hora.setHours(hora.getHours() + parseInt(skill.cd))
+         db.get("cd").find({comando: skill.comando, bot_comando: skill.bot_comando, user: message.author.id}).assign(cd).write()
          setTimeout(() => {            
             db.get("cd").remove({comando: skill.comando, bot_comando: skill.bot_comando , user: message.author.id}).write()
             message.reply(`Treino liberado`)
@@ -209,10 +211,11 @@ function cds(skill){
       cd =new Object
       cd.user=message.author.id     
       cd.comando=skill.comando
-      cd.tempo_final=moment(hora, 'hh:mm').add(parseInt(skill.cd)-1, 'minutes').format('hh:mm')
+      cd.bot_comando=comando
+      cd.tempo_final=hora.setHours(hora.getHours() + parseInt(skill.cd))
       db.get("cd").push(cd).write() 
       setTimeout(() => {
-         db.get("cd").remove({comando: skill.comando, user: message.author.id}).write()   
+         db.get("cd").remove({comando: skill.comando, user: message.author.id, bot_comando:comando}).write()   
          message.reply(`Treino liberado`)
        }, c);
       return true 
@@ -324,7 +327,7 @@ function view_status_ficha_antiga(npc){
    let total_mc=parseInt(status_antigo.cab)+parseInt(status_antigo.caf)+parseInt(status_antigo.cam)+parseInt(status_antigo.cei)
    let msn=''
    msn+= '```CSS\n'
-   msn+=`⪻Atributos Físicos⪼ [${npc.nome}]  \n`
+   msn+=`⪻Atributos Físicos⪼ [${npc.nome}] Nivel [${status_antigo.nivel}] \n`
    msn+="-------------------\n"
    msn+="      ANTIGO\n"
    msn+="-------------------\n"
@@ -473,7 +476,8 @@ function view_treino(treino,comando){
       msn+=(treino.marcial_min==undefined || treino.marcial_min=='0'||treino.marcial_min=='' ) ? `***Add a recompensa minima para os pontos de estilo marcial*** \n%${comando}-${treino.comando}-marcial_min\n` : ``
       msn+=(treino.marcial_max==undefined || treino.marcial_max=='0'||treino.marcial_max=='' ) ? `***Add a recompensa maxima para os pontos de estilo marcial*** \n%${comando}-${treino.comando}-marcial_max\n` : ``
       msn+=`➤ Parabéns, ${comando} você ganhou:\n`
-      if (treino.status_min!=undefined && treino.status_max!=undefined) msn+=`↪ ${retorna_hp(parseInt(treino.status_min),parseInt(treino.status_max))} Pontos de Atributos e ${retorna_hp(parseInt(treino.marcial_min),parseInt(treino.marcial_max))} Pontos Marcias \n`
+      if (treino.status_min!=undefined && treino.status_max!=undefined) msn+=`↪ ${retorna_hp(parseInt(treino.status_min),parseInt(treino.status_max))} Pontos de Atributos, ${retorna_hp(parseInt(treino.marcial_min),parseInt(treino.marcial_max))} Pontos Marcias e ${retorna_hp(parseInt(treino.marcial_min),parseInt(treino.marcial_max))} de Skill Points (sp)\n`
+      msn+=(treino.nivel==undefined || treino.nivel=='0'||treino.nivel=='' ) ? `***Add o valor do NIVEL minimo necessario para realizar esse treinamento*** \n%${comando}-${treino.comando}-nivel\n` : `[Nivel minimo:] ${treino.nivel} Nivel\n`
       msn+=(treino.cd==undefined || treino.cd=='0'||treino.cd=='' ) ? `***Add o tempo de recarga do treino EM HORAS*** \n%${comando}-${treino.comando}-cd\n` : `[CoolDown:] ${treino.cd} Hora\n`
       msn+=(treino.aparencia==undefined || treino.aparencia=='') ? `***Add uma Imagem para o treino*** \n%${comando}-${treino.comando}-aparencia\n` : ``
       msn+="```\n"
@@ -1640,21 +1644,23 @@ QTD| Item\n`
          }
          else if(retornar_treino(resposta)!=undefined){
             if(resposta==retornar_treino(resposta).comando){  
-               treino = retornar_treino(resposta)  
-               if (cds(treino)==true){
-               
-                     return message.channel.send(view_treino(treino,comando), {
-                        files: [
-                           `${retorna_aparencia(treino)}`
+               treino = retornar_treino(resposta)
+               if(bot.status_apv!=undefined){ 
+                  status_antigo=JSON.parse(bot.status_apv) 
+                  if(status_antigo.nivel==undefined) return message.channel.send(`Precisa ter um nivel informado e aprovado`)
+                  if(status_antigo.nivel<treino.nivel) return message.channel.send(`Precisa de no minimo nivel ${treino.nivel} para fazer esse treino!`)
+                     if (cds(treino, comando)==true){                  
+                        return message.channel.send(view_treino(treino,comando), {
+                           files: [
+                              `${retorna_aparencia(treino)}`
                         ]
-                     })  
-                           
-                  
-                            
+                        })          
+                  }else{
+                     return message.channel.send('Treino em tempo de recarga')
+                  }
                }else{
-                  return message.channel.send('Treino em tempo de recarga')
-               }
-                        
+                  return message.channel.send('Precisa de um status aprovado para realizar treinos!')
+               }                     
                    
             }    
          }            
